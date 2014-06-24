@@ -116,6 +116,8 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-token_authenticatable (0.1.0)
+      devise (~> 3.2.0)
     devise_lastseenable (0.0.4)
       devise
       devise
@@ -123,6 +125,13 @@ GEM
       rails (>= 3.0.4)
       warden
       warden
+    diaspora-vines (0.0.13)
+      bcrypt (~> 3.1)
+      em-hiredis (~> 0.1.1)
+      eventmachine (~> 1.0.3)
+      http_parser.rb (~> 0.5.3)
+      net-ldap (~> 0.3.1)
+      nokogiri (>= 1.5.10)
     diff-lcs (1.2.5)
     eco (1.0.0)
       coffee-script
@@ -276,6 +285,7 @@ GEM
     multipart-post (2.0.0)
     mysql2 (0.3.16)
     nested_form (0.3.2)
+    net-ldap (0.3.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -519,6 +529,8 @@ DEPENDENCIES
   devise (= 3.3.0)
   devise_lastseenable (= 0.0.4)
   entypo-rails (= 2.2.2)
+  devise-token_authenticatable (~> 0.1.0)
+  diaspora-vines (~> 0.0.13)
   factory_girl_rails (= 4.4.1)
   faraday (= 0.9.0)
   faraday_middleware (= 0.9.1)

@@ -55,6 +55,7 @@ module Diaspora
       home.js
       ie.js
       inbox.js
+      jappix.js
       jquery.js
       jquery_ujs.js
       jquery.textchange.js

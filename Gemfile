@@ -22,6 +22,7 @@ gem 'json',        '1.8.1'
 
 gem 'devise', '3.3.0'
 gem 'devise_lastseenable', '0.0.4'
+gem 'devise-token_authenticatable', '~> 0.1.0'
 
 # Captcha
 
@@ -116,6 +117,10 @@ gem 'omniauth-tumblr',   '1.1'
 gem 'omniauth-twitter',  '1.0.1'
 gem 'twitter',           '4.8.1'
 gem 'omniauth-wordpress','0.2.1'
+
+# XMPP vines dependencies
+gem 'diaspora-vines',           '~> 0.0.13'
+gem 'rails-assets-jappix-mini', '~> 0.1.3'
 
 # Tags
 
