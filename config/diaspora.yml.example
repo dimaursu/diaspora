@@ -174,23 +174,23 @@ configuration: ## Section
     ## touch following configuration
     chat:
       ## Disable the chat and all his components
-      enabled: true
+      #enabled: false
 
       ## You have a custom XMPP server running?
       ## Then you can disable the internal server here:
-      server: true
+      #server: false
 
       ## The internal xmpp server does not support https
       ## and even if we implement it, we would ran into certificate issues.
       ## The problem with mixed-content is described here:
       ## https://github.com/Zauberstuhl/diaspora/issues/6
-      ## 
+      ##
       ## The easiest way of avoiding certificate and mixed-content issues
       ## is to use a proxy, e.g.:
-      ## 
+      ##
       ## Apache: https://gist.github.com/Zauberstuhl/2d09330961614b12b642
       ## Nginx: https://gist.github.com/Zauberstuhl/ee95e1eacefa6ddbec6e
-      ## 
+      ##
       ## If you configured your proxy correctly you should un-comment
       ## the bosh configuration variable:
       #bosh_url: "/http-bind"
