@@ -210,12 +210,12 @@ describe UsersController, :type => :controller do
       expect(assigns[:email_prefs]['mentioned']).to be false
     end
 
-    it 'does not allow token auth' do
-      sign_out :user
-      bob.reset_authentication_token!
-      get :edit, :auth_token => bob.authentication_token
-      expect(response).to redirect_to new_user_session_path
-    end
+    #it 'does not allow token auth' do
+    #  sign_out :user
+    #  bob.reset_authentication_token!
+    #  get :edit, :auth_token => bob.authentication_token
+    #  response.should redirect_to new_user_session_path
+    #end
   end
 
   describe '#destroy' do
