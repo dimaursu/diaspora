@@ -257,7 +257,8 @@ Devise.setup do |config|
   Warden::Manager.before_logout do |user, auth, opts|
     # for security reason we should reset
     # authentication token for xmpp server
-    user.reset_authentication_token!
+    # TODO: this is not working on production?!
+    #user.reset_authentication_token!
   end
 
   # ==> Mountable engine configurations
