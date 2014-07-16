@@ -180,6 +180,11 @@ configuration: ## Section
       ## Then you can disable the internal server here:
       #server: false
 
+      ## If you want to encrypt your chat streams
+      ## add here your server certificate and key
+      #certificate: "/path/to/server.crt"
+      #key: "/path/to/server.key"
+
       ## The internal xmpp server does not support https
       ## and even if we implement it, we would ran into certificate issues.
       ## The problem with mixed-content is described here:
