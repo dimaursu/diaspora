@@ -254,12 +254,6 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
-  Warden::Manager.before_logout do |user, auth, opts|
-    # for security reason we should reset
-    # authentication token for xmpp server
-    # TODO: this is not working on production?!
-    #user.reset_authentication_token!
-  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
