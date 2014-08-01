@@ -125,7 +125,7 @@ GEM
       rails (>= 3.0.4)
       warden
       warden
-    diaspora-vines (0.1.1)
+    diaspora-vines (0.4.9.diaspora.0.1.1)
       bcrypt (~> 3.1)
       em-hiredis (~> 0.1.1)
       eventmachine (~> 1.0.3)
@@ -530,7 +530,7 @@ DEPENDENCIES
   devise_lastseenable (= 0.0.4)
   entypo-rails (= 2.2.2)
   devise-token_authenticatable (~> 0.1.0)
-  diaspora-vines (~> 0.1.1)
+  diaspora-vines (~> 0.4.9.diaspora.0.1.1)
   factory_girl_rails (= 4.4.1)
   faraday (= 0.9.0)
   faraday_middleware (= 0.9.1)

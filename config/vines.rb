@@ -1,12 +1,14 @@
 Vines::Config.configure do
   # Set the logging level to debug, info, warn, error, or fatal. The debug
   # level logs all XML sent and received by the server.
-  log :info
+  log 'log/vines.log' do
+    level :debug
+  end
 
   # Set the directory in which to look for virtual hosts' TLS certificates.
   # This is optional and defaults to the conf/certs directory created during
   # `vines init`.
-  #certs 'conf/certs'
+  certs 'config/vines'
 
   # Setup a pepper to generate the encrypted password.
   pepper "065eb8798b181ff0ea2c5c16aee0ff8b70e04e2ee6bd6e08b49da46924223e39127d5335e466207d42bf2a045c12be5f90e92012a4f05f7fc6d9f3c875f4c95b"

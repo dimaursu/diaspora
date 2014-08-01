@@ -119,7 +119,7 @@ gem 'twitter',           '4.8.1'
 gem 'omniauth-wordpress','0.2.1'
 
 # XMPP vines dependencies
-gem 'diaspora-vines',           '~> 0.1.1'
+gem 'diaspora-vines',           '~> 0.4.9.diaspora.0.1.1'
 gem 'rails-assets-jappix-mini', '~> 0.1.3'
 
 # Tags
