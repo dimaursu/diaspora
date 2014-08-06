@@ -173,17 +173,12 @@ configuration: ## Section
     ## or want to use a custom server then you should
     ## touch following configuration
     chat:
-      ## Disable the chat and all his components
-      #enabled: false
+      ## Enable the chat and all his components
+      #enabled: true
 
       ## You have a custom XMPP server running?
       ## Then you can disable the internal server here:
       #server: false
-
-      ## If you want to encrypt your chat streams
-      ## add here your server certificate and key
-      #certificate: "/path/to/server.crt"
-      #key: "/path/to/server.key"
 
       ## The internal xmpp server does not support https
       ## and even if we implement it, we would ran into certificate issues.

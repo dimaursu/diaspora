@@ -41,8 +41,9 @@ defaults:
     embed_sidekiq_worker: false
     sidekiq_workers: 1
     chat:
-      enabled: true
+      enabled: false
       server: true
+      bosh_url: ''
   privacy:
     jquery_cdn: false
     google_analytics_key:
@@ -141,9 +142,6 @@ development:
     single_process_mode: true
     require_ssl: false
   server:
-    chat:
-      enabled: true
-      server: true
     unicorn_worker: 1
   settings:
     autofollow_on_join: false
