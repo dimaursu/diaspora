@@ -5,7 +5,7 @@
 
 - content_for :head do
   = javascript_include_tag :home
-  - if AppConfig.server.chat.enabled.present? && AppConfig.server.chat.enabled
+  - if AppConfig.server.chat.enabled?
     = javascript_include_tag :jappix, :id => 'jappix', :data => { :bosh => AppConfig.server.chat.bosh_url }
 
 - if current_user.getting_started?
