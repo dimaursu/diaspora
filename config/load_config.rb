@@ -27,9 +27,6 @@ AppConfig ||= Configurate::Settings.create do
                File.join(config_dir, 'diaspora.yml'),
                namespace: "configuration", required: false
   add_provider Configurate::Provider::YAML,
-               File.join(config_dir, 'database.yml'),
-               namespace: rails_env
-  add_provider Configurate::Provider::YAML,
                File.join(config_dir, 'defaults.yml'),
                namespace: rails_env
   add_provider Configurate::Provider::YAML,
