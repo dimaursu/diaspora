@@ -59,31 +59,31 @@ ActiveRecord::Schema.define(version: 20140906192846) do
     t.integer "person_id"
   end
 
-  create_table "chat_contacts", :force => true do |t|
-    t.integer "user_id",                     :null => false
-    t.string  "jid",                         :null => false
+  create_table "chat_contacts", force: true do |t|
+    t.integer "user_id",                  null: false
+    t.string  "jid",                      null: false
     t.string  "name"
-    t.string  "ask",          :limit => 128
-    t.string  "subscription", :limit => 128, :null => false
+    t.string  "ask",          limit: 128
+    t.string  "subscription", limit: 128, null: false
     t.text    "groups"
   end
 
-  add_index "chat_contacts", ["user_id", "jid"], :name => "index_chat_contacts_on_user_id_and_jid", :unique => true
+  add_index "chat_contacts", ["user_id", "jid"], name: "index_chat_contacts_on_user_id_and_jid", unique: true, using: :btree
 
-  create_table "chat_fragments", :force => true do |t|
-    t.integer "user_id",                  :null => false
-    t.string  "root",      :limit => 256, :null => false
-    t.string  "namespace", :limit => 256, :null => false
-    t.text    "xml",                      :null => false
+  create_table "chat_fragments", force: true do |t|
+    t.integer "user_id",               null: false
+    t.string  "root",      limit: 256, null: false
+    t.string  "namespace", limit: 256, null: false
+    t.text    "xml",                   null: false
   end
 
-  add_index "chat_fragments", ["user_id"], :name => "index_chat_fragments_on_user_id", :unique => true
+  add_index "chat_fragments", ["user_id"], name: "index_chat_fragments_on_user_id", unique: true, using: :btree
 
-  create_table "comments", :force => true do |t|
-    t.text     "text",                                                      :null => false
-    t.integer  "commentable_id",                                            :null => false
-    t.integer  "author_id",                                                 :null => false
-    t.string   "guid",                                                      :null => false
+  create_table "comments", force: true do |t|
+    t.text     "text",                                                null: false
+    t.integer  "commentable_id",                                      null: false
+    t.integer  "author_id",                                           null: false
+    t.string   "guid",                                                null: false
     t.text     "author_signature"
     t.text     "parent_author_signature"
     t.datetime "created_at",                                          null: false
@@ -239,8 +239,8 @@ ActiveRecord::Schema.define(version: 20140906192846) do
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
     t.string "ob_type"
-    t.text "image"
-    t.text "url"
+    t.text   "image"
+    t.text   "url"
     t.text   "description"
   end
 

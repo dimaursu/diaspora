@@ -150,7 +150,7 @@ then
 *****************************************************************
 You enabled the chat feature but haven't set the bosh url! That
 could lead to mixed-content problems with the http clients. Please
-think about editing you proxy configuration as described in:
+think about editing your proxy configuration as described in:
 
 diaspora.yml.example
 *****************************************************************

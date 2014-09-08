@@ -40,4 +40,4 @@
 //= require bootstrap-dropdown
 //= require bootstrap-modal
 //= require osmlocator
-//= require jappix-mini.js
+//= require diaspora-jappix-mini
