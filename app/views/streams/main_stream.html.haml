@@ -5,10 +5,10 @@
 
 - content_for :head do
   = javascript_include_tag :home
-  - if AppConfig.server.chat.enabled?
+  - if AppConfig.chat.enabled?
     = javascript_include_tag :jappix, :id => 'jappix',
-      :data => { :boshbind => AppConfig.server.chat.server.bosh.bind,
-                 :boshport => AppConfig.server.chat.server.bosh.port }
+      :data => { :boshbind => AppConfig.chat.server.bosh.bind,
+                 :boshport => AppConfig.chat.server.bosh.port }
 
 - if current_user.getting_started?
   #welcome-to-diaspora

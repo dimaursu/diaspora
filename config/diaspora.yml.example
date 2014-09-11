@@ -169,79 +169,79 @@ configuration: ## Section
     ## increase environment.sidekiq.concurrency instead!
     #sidekiq_workers: 1
 
-    ## Diaspora has a internal XMPP server. If you like a chat or want
-    ## to use a custom server then you should touch following configuration
-    ##
-    ## The internal xmpp server does not support https
-    ## and even if we implement it, we would ran into certificate issues.
-    ## The problem with mixed-content is described here:
-    ## https://github.com/Zauberstuhl/diaspora/issues/6
-    ##
-    ## The easiest way of avoiding certificate and mixed-content issues
-    ## is to use a proxy, e.g.:
-    ##
-    ## Apache: https://gist.github.com/Zauberstuhl/2d09330961614b12b642
-    ## Nginx: https://gist.github.com/Zauberstuhl/ee95e1eacefa6ddbec6e
-    ##
-    ## If you configured your proxy correctly you should adjust
-    ## the configuration in the bosh section
-    chat:
+  ## Diaspora has a internal XMPP server. If you like a chat or want
+  ## to use a custom server then you should touch following configuration
+  ##
+  ## The internal xmpp server does not support https
+  ## and even if we implement it, we would ran into certificate issues.
+  ## The problem with mixed-content is described here:
+  ## https://github.com/Zauberstuhl/diaspora/issues/6
+  ##
+  ## The easiest way of avoiding certificate and mixed-content issues
+  ## is to use a proxy, e.g.:
+  ##
+  ## Apache: https://gist.github.com/Zauberstuhl/2d09330961614b12b642
+  ## Nginx: https://gist.github.com/Zauberstuhl/ee95e1eacefa6ddbec6e
+  ##
+  ## If you configured your proxy correctly you should adjust
+  ## the configuration in the bosh section
+  chat: ## Section
 
-      ## Enable the chat and all his components
-      #enabled: true
-      ## Custom XMPP server configuration goes here
-      server:
+    ## Enable the chat and all his components
+    #enabled: true
+    ## Custom XMPP server configuration goes here
+    server: ## Section
 
-        ## If you have a own XMPP server you can disable the default one
-        #enabled: false
-        # Set the directory in which to look for virtual hosts' TLS certificates
-        #certs: 'config/vines'
-        ## client to server
-        c2s:
+      ## If you have a own XMPP server you can disable the default one
+      #enabled: false
+      # Set the directory in which to look for virtual hosts' TLS certificates
+      #certs: 'config/vines'
+      ## client to server
+      c2s: ## Section
 
-          # Configure the address vines should listen on
-          #address: '0.0.0.0'
-          # Configure the client-to-server port
-          #port: 5222
-          # The maximum we'd like to allow for stanza size
-          #max_stanza_size: 65536
-          # The max_resources_per_account attribute limits how many
-          # concurrent connections one user can have to the server
-          #max_resources_per_account: 5
+        # Configure the address vines should listen on
+        #address: '0.0.0.0'
+        # Configure the client-to-server port
+        #port: 5222
+        # The maximum we'd like to allow for stanza size
+        #max_stanza_size: 65536
+        # The max_resources_per_account attribute limits how many
+        # concurrent connections one user can have to the server
+        #max_resources_per_account: 5
 
-        # server to server
-        s2s:
+      # server to server
+      s2s: ## Section
 
-          # Configure the address vines should listen on
-          #address: '0.0.0.0'
-          # Configure the server-to-server port
-          #port: 5269
-          # The max_stanza_size attribute should be
-          # much larger than the setting for client-to-server
-          #max_stanza_size: 131072
+        # Configure the address vines should listen on
+        #address: '0.0.0.0'
+        # Configure the server-to-server port
+        #port: 5269
+        # The max_stanza_size attribute should be
+        # much larger than the setting for client-to-server
+        #max_stanza_size: 131072
 
-        # XEP-0124 BOSH requests
-        bosh:
+      # XEP-0124 BOSH requests
+      bosh: ## Section
 
-          # Configure the address vines should listen on
-          #address: '0.0.0.0'
-          # Configure the BOSH port
-          #port: 5280
-          # Configure the bind endpoint
-          #bind: '/http-bind'
-          # The maximum we'd like to allow for stanza size
-          #max_stanza_size: 65536
-          # The max_resources_per_account attribute limits how many
-          # concurrent connections one user can have to the server
-          #max_resources_per_account: 5
+        # Configure the address vines should listen on
+        #address: '0.0.0.0'
+        # Configure the BOSH port
+        #port: 5280
+        # Configure the bind endpoint
+        #bind: '/http-bind'
+        # The maximum we'd like to allow for stanza size
+        #max_stanza_size: 65536
+        # The max_resources_per_account attribute limits how many
+        # concurrent connections one user can have to the server
+        #max_resources_per_account: 5
 
-        # Specify log behaviour here
-        log:
-          # log file location
-          #file: 'log/vines.log'
-          # Set the logging level to debug, info, warn, error, or fatal. The debug
-          # level logs all XML sent and received by the server.
-          #level: 'info'
+      # Specify log behaviour here
+      log: ## Section
+        # log file location
+        #file: 'log/vines.log'
+        # Set the logging level to debug, info, warn, error, or fatal. The debug
+        # level logs all XML sent and received by the server.
+        #level: 'info'
 
   ## Settings potentially affecting the privacy of your users 
   privacy: ## Section

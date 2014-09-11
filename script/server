@@ -76,9 +76,9 @@ vars=$(bundle exec ruby ./script/get_config.rb \
   single_process_mode=environment.single_process_mode? \
   embed_sidekiq_worker=server.embed_sidekiq_worker \
   workers=server.sidekiq_workers \
-  chat=server.chat.enabled \
-  chat_server=server.chat.server.enabled \
-  chat_bosh_port=server.chat.server.bosh.port
+  chat=chat.enabled \
+  chat_server=chat.server.enabled \
+  chat_bosh_port=chat.server.bosh.port
 )
 on_failure "Couldn't parse config/diaspora.yml!"
 eval "$vars"
