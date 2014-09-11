@@ -77,8 +77,8 @@ vars=$(bundle exec ruby ./script/get_config.rb \
   embed_sidekiq_worker=server.embed_sidekiq_worker \
   workers=server.sidekiq_workers \
   chat=server.chat.enabled \
-  chat_server=server.chat.server \
-  chat_bosh_url=server.chat.bosh_url
+  chat_server=server.chat.server.enabled \
+  chat_bosh_port=server.chat.server.bosh.port
 )
 on_failure "Couldn't parse config/diaspora.yml!"
 eval "$vars"
@@ -144,11 +144,11 @@ xmpp=""
 if [ "$chat" = "true" ] && [ "$chat_server" = "true" ]
 then
   xmpp="xmpp=1,"
-  if [ "$chat_bosh_url" = "" ]
+  if [ "$chat_bosh_port" = "5280" ]
   then
     warning "
 *****************************************************************
-You enabled the chat feature but haven't set the bosh url! That
+You enabled the chat feature but haven't configured BOSH! That
 could lead to mixed-content problems with the http clients. Please
 think about editing your proxy configuration as described in:
 

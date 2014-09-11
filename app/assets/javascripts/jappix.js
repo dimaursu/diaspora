@@ -3,8 +3,14 @@ $(document).ready(function() {
     api_path: 'api/v1/tokens',
 
     bosh_path: function() {
-      var query = $('script#jappix').data('bosh') || ':5280/http-bind'
-      return (location.protocol + '//' + location.hostname + query)
+      var port = $('script#jappix').data('boshport');
+      var bind = $('script#jappix').data('boshbind');
+      var url = location.protocol + '//' + location.hostname
+      if (port != "443" && port != "80") {
+        return (url + ":" + port + bind)
+      } else {
+        return (url + bind)
+      }
     },
 
     jid: app.currentUser.get('diaspora_id'),
