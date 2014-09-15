@@ -78,7 +78,7 @@ vars=$(bundle exec ruby ./script/get_config.rb \
   workers=server.sidekiq_workers \
   chat=chat.enabled \
   chat_server=chat.server.enabled \
-  chat_bosh_port=chat.server.bosh.port
+  chat_bosh_proxy=chat.server.bosh.proxy
 )
 on_failure "Couldn't parse config/diaspora.yml!"
 eval "$vars"
@@ -144,7 +144,7 @@ xmpp=""
 if [ "$chat" = "true" ] && [ "$chat_server" = "true" ]
 then
   xmpp="xmpp=1,"
-  if [ "$chat_bosh_port" = "5280" ]
+  if [ "$chat_bosh_proxy" = "false" ]
   then
     warning "
 *****************************************************************

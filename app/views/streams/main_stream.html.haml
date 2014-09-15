@@ -7,8 +7,7 @@
   = javascript_include_tag :home
   - if AppConfig.chat.enabled?
     = javascript_include_tag :jappix, :id => 'jappix',
-      :data => { :boshbind => AppConfig.chat.server.bosh.bind,
-                 :boshport => AppConfig.chat.server.bosh.port }
+      :data => { :endpoint => get_bosh_endpoint }
 
 - if current_user.getting_started?
   #welcome-to-diaspora
