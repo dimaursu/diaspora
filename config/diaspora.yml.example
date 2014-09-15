@@ -196,6 +196,14 @@ configuration: ## Section
       #enabled: false
       # Set the directory in which to look for virtual hosts' TLS certificates
       #certs: 'config/vines'
+      # The server accepts on default only valid certificates.
+      # Any connection which uses self-signed will be closed.
+      # If you'd like to accept self-signed certificates
+      # on your server set the next option to true
+      #accept_self_signed: true
+      # Only touch the next option if you'd like to deny
+      # your user to exchange messages between other XMPP server
+      #cross_domain_messages: false
       ## client to server
       c2s: ## Section
 

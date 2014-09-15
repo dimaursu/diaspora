@@ -42,6 +42,8 @@ defaults:
     sidekiq_workers: 1
   chat:
     enabled: false
+    accept_self_signed: false
+    cross_domain_messages: true
     server:
       enabled: true
       certs: 'config/vines'
