@@ -227,6 +227,12 @@ configuration: ## Section
         # The max_stanza_size attribute should be
         # much larger than the setting for client-to-server
         #max_stanza_size: 131072
+        # On default every xmpp server with a valid certificate
+        # is able to communicate with your server. In case of
+        # malicous server (e.g. spam reason) you can black-list them:
+        #blacklist:
+        #  - 'example.com'
+        #  - 'malicous.net'
 
       # XEP-0124 BOSH requests
       bosh: ## Section
