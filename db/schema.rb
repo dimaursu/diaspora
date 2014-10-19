@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140906192846) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "account_deletions", force: true do |t|
     t.string   "diaspora_handle"
     t.integer  "person_id"
@@ -234,7 +237,7 @@ ActiveRecord::Schema.define(version: 20140906192846) do
     t.text   "data",              null: false
   end
 
-  add_index "o_embed_caches", ["url"], name: "index_o_embed_caches_on_url", length: {"url"=>255}, using: :btree
+  add_index "o_embed_caches", ["url"], name: "index_o_embed_caches_on_url", using: :btree
 
   create_table "open_graph_caches", force: true do |t|
     t.string "title"
@@ -422,11 +425,11 @@ ActiveRecord::Schema.define(version: 20140906192846) do
 
   create_table "reports", force: true do |t|
     t.integer  "item_id",                    null: false
-    t.string   "item_type",                  null: false
     t.boolean  "reviewed",   default: false
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "item_type",                  null: false
     t.integer  "user_id",                    null: false
   end
 

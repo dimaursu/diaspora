@@ -47,9 +47,10 @@ gem 'rack-cors', '0.2.9', :require => 'rack/cors'
 
 # CSS
 
-gem 'bootstrap-sass', '2.3.2.2'
+gem 'bootstrap-sass', '~> 3.2.0'
 gem 'compass-rails',  '2.0.0'
 gem 'sass-rails',     '4.0.3'
+gem 'autoprefixer-rails'
 
 # Database
 
@@ -119,7 +120,7 @@ gem 'twitter',           '4.8.1'
 gem 'omniauth-wordpress','0.2.1'
 
 # XMPP vines dependencies
-gem 'diaspora-vines',                    '0.4.10.diaspora.0.1.23'
+gem 'diaspora-vines', '~> 0.1.24'
 gem 'rails-assets-diaspora-jappix-mini', '0.1.2'
 
 # Tags
@@ -195,6 +196,8 @@ group :development do
   gem 'spork',       '1.0.0rc4'
 
   # Debugging
+  gem 'mina'
+  gem 'debugger'
   gem 'pry'
   gem 'pry-debundle'
 end
