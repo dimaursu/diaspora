@@ -72,7 +72,6 @@ module Diaspora
       blueprint.css
       bootstrap.css
       bootstrap-complete.css
-      bootstrap-responsive.css
       default.css
       error_pages.css
       admin.css
