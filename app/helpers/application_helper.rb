@@ -65,4 +65,10 @@ module ApplicationHelper
     buf << [ javascript_tag("$.fx.off = true;") ] if Rails.env.test?
     buf.join("\n").html_safe
   end
+
+  def svg_tag(path)
+    File.open("app/assets/images/#{path}", "rb") do |file|
+      raw file.read
+    end
+  end
 end
