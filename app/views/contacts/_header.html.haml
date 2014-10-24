@@ -15,9 +15,9 @@
     .pull-right
       = search_field_tag :contact_search, "", id: "contact_list_search", class: "search-query",  placeholder: t('contacts.index.user_search')
     %h3
-      %span#aspect_name
+      .col-md-#aspect_name
         = @aspect.name
-      %span#change_aspect_name
+      .col-md-#change_aspect_name
         %i.entypo.pencil.contacts-header-icon{:title => t('aspects.edit.rename')}
     #aspect_name_form
       = form_for @aspect, :remote => true do |aspect|

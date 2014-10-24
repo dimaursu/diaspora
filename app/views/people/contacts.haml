@@ -9,10 +9,10 @@
 - content_for :page_title do
   = @person.name
 
-.span-6
+.col-md--6
   = render :partial => 'people/profile_sidebar', :locals => {:person => @person, :contact => @contact }
 
-.span-18.last
+.col-md--18.last
   = render 'people/sub_header', :person => @person, :contact => @contact
 
   #people_stream.stream

@@ -14,7 +14,7 @@
         = person_image_link(photo.author, :size => :thumb_small)
         = person_link(photo.author)
         .info
-          %span
+          .col-md-
             = link_to(post_path(photo)) do
               = timeago(photo.created_at)
 

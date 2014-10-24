@@ -1,18 +1,18 @@
 .container-fluid#notifications_container
-  .row-fluid
-    .span3
+  .row
+    .col-md-3
       %h3
         = t('.notifications')
       %ul.nav.nav-tabs.nav-stacked
         %li{ :class => ('active' unless params[:type] && @grouped_unread_notification_counts.has_key?(params[:type])) }
           %a{ :href => '/notifications' + (params[:show] == 'unread' ? '?show=unread' : '') }
-            %span.pull-right.badge{:class => (@unread_notification_count > 0 ? 'badge-important' : 'badge-default')}
+            .col-md-.pull-right.badge{:class => (@unread_notification_count > 0 ? 'badge-important' : 'badge-default')}
               = @unread_notification_count
             = t('.all_notifications')
         - @grouped_unread_notification_counts.each do |key, count|
           %li{ :class => ('active' if params[:type] == key), :data => { :type => key } }
             %a{ :href => '/notifications?type=' + key + (params[:show] == 'unread' ? '&show=unread' : '') }
-              %span.pull-right.badge{ :class => (count > 0 ? 'badge-important' :'badge-default') }
+              .col-md-.pull-right.badge{ :class => (count > 0 ? 'badge-important' :'badge-default') }
                 = count
               - case key
                 - when 'also_commented', 'comment_on_post'
@@ -27,9 +27,9 @@
                   %i.entypo.users
               = t('.'+key)
 
-    .span9.stream.notifications
-      .row-fluid.header
-        .span12
+    .col-md-9.stream.notifications
+      .row.header
+        .col-md-12
           .btn-toolbar.pull-right
             .btn-group
               %a.btn.btn-default{ :class => ('active' unless params[:show] == 'unread'), :href => '/notifications' + (params[:type] ? '?type=' + params[:type] : '') }
@@ -42,12 +42,12 @@
               -else
                 = t('.mark_all_as_read')
       - @group_days.each do |day, notes|
-        .day_group.row-fluid
-          .date.span2
+        .day_group.row
+          .date.col-md-2
             .day= the_day(day.split(' '))
             .month= the_month(day.split(' '))
 
-          .notifications_for_day.span10
+          .notifications_for_day.col-md-10
             - notes.each do |note|
               = render :partial => 'notifications/notification', :locals => { :note => note }
 

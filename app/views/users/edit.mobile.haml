@@ -17,7 +17,7 @@
     = t('settings')
   = render 'shared/settings_nav'
 
-.span-12.prepend-5.last
+.col-md--12.prepend-5.last
   %hr
 
   %h4
@@ -98,7 +98,7 @@
       = f.check_box :auto_follow_back
     %br
     %p.checkbox_select
-      %span{:style => "color: #999"}
+      .col-md-{:style => "color: #999"}
         = t('.auto_follow_aspect')
       = f.select :auto_follow_back_aspect_id, aspect_options_for_select(current_user.aspects)
     %br
@@ -158,7 +158,7 @@
 
   %hr
 
-  #account_data.span-5.append-2
+  #account_data.col-md--5.append-2
     %h4
       = t('.export_data')
     = link_to t('.download_xml'), export_user_path, :class => "btn"
@@ -166,7 +166,7 @@
     %br
     = link_to t('.download_photos'), "#", :class => "btn", :id => "photo-export-button", :title => t('.photo_export_unavailable')
 
-  .span-5.last
+  .col-md--5.last
     %h4
       = t('.close_account_text')
     =link_to t('.close_account_text'), '#close_account_pane', :rel => 'facebox', :class => "btn", :id => "close_account"
@@ -177,13 +177,13 @@
           = t('.close_account.dont_go')
         %p
           = t('.close_account.make_diaspora_better')
-        .span-10
+        .col-md--10
           = image_tag 'http://itstrulyrandom.com/wp-content/uploads/2008/03/sadcat.jpg'
           %br
           %small
             %b
               = t('.close_account.mr_wiggles')
-        .span-10.last
+        .col-md--10.last
           %ul
             %li
               = t('.close_account.what_we_delete')

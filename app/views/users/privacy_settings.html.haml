@@ -8,16 +8,16 @@
 .bootstrap_header_padding
 
 .container
-  .row-fluid
-    .span12
+  .row
+    .col-md-12
       #section_header
         %h2
           = t('privacy')
         = render 'shared/settings_nav'
 
-  .row-fluid
-    .span3
-    .span5
+  .row
+    .col-md-3
+    .col-md-5
       %h3
         = t('.ignored_users')
 
@@ -27,4 +27,4 @@
         = link_to t('.stop_ignoring'), block_path(block),
           :method => :delete
         %br
-    .span3
+    .col-md-3

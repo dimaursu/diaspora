@@ -5,7 +5,7 @@
 = javascript_include_tag :home
 
 .container-fluid#bookmarklet
-  .row-fluid
+  .row
     %h4
       =t('bookmarklet.post_something')
     = render :partial => 'publisher/publisher', :locals => { :aspect => :profile, :selected_aspects => @aspects,  :aspect_ids => @aspect_ids }

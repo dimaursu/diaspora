@@ -25,8 +25,8 @@
               = status.text_area :fake_text, :rows => 2, :value => h(publisher_formatted_text), :tabindex => 1, :placeholder => "#{t('contacts.index.start_a_conversation')}..."
             = status.hidden_field :text, :value => h(publisher_hidden_text), :class => 'clear_on_submit'
 
-            %span#publisher-images
-              %span.markdownIndications
+            .col-md-#publisher-images
+              .col-md-.markdownIndications
                 != t('shared.publisher.formatWithMarkdown', markdown_link: link_to(t('help.markdown'), 'https://diasporafoundation.org/formatting', target: :blank))
               #poll_creator.btn{:title => t('shared.publisher.poll.add_a_poll')}
                 %i.entypo.bar-graph{:class => "publisher_image"}
@@ -51,7 +51,7 @@
         = image_tag 'ajax-loader.gif'
       .options_and_submit
         .public_toggle
-          %span#publisher_service_icons
+          .col-md-#publisher_service_icons
             - if current_user.services
               - for service in current_user.services
                 = content_tag :div, nil,
@@ -67,11 +67,11 @@
             .button.toggle.publisher
               - if publisher_public
                 %i#visibility-icon.entypo.small.globe
-                %span.text
+                .col-md-.text
                   = t('public')
               - else
                 %i#visibility-icon.entypo.small.lock
-                %span.text
+                .col-md-.text
                   - if all_aspects_selected?(selected_aspects)
                     = t('all_aspects')
                   - elsif selected_aspects.size == 1

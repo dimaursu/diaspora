@@ -20,19 +20,10 @@
     = chartbeat_head_block
     = include_mixpanel
 
-    = include_base_css_framework(@css_framework)
-    - if @css_framework == :bootstrap && !@include_application_css
-      = stylesheet_link_tag :default, 'new-templates', :media => 'all'
-    - else
-      = stylesheet_link_tag 'application', 'default'
+    = stylesheet_link_tag :application, media: 'all'
 
     - if rtl?
       = stylesheet_link_tag :rtl, :media => 'all'
-
-    = old_browser_js_support
-    <!--[if IE]>
-    = javascript_include_tag :ie
-    <![endif]-->
 
     = jquery_include_tag
 
@@ -51,6 +42,8 @@
       = og_page_specific_tags(@post)
 
     = include_gon(:camel_case => true)
+    %link{:href => "http://fonts.googleapis.com/css?family=Patrick+Hand&subset=latin,latin-ext",
+      :rel => "stylesheet", :type => "text/css"}
 
   %body
     = flash_messages

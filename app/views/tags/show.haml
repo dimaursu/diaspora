@@ -9,15 +9,15 @@
     = t('.whatup', :pod => @pod_url)
 
 .container-fluid#tags_show
-  .row-fluid
-    .span3.offset1
+  .row
+    .col-md-3.col-md-offset-1
       %h3
         = t('people', :count => @stream.tagged_people_count)
 
       .side_stream.stream
         = render :partial => 'people/index', :locals => {:people => @stream.tagged_people}
 
-    .span7
+    .col-md-7
       .stream_container
         #author_info
           %h2
@@ -31,7 +31,7 @@
         #main_stream.stream
 
         #paginate
-          %span.loader.hidden
+          .col-md-.loader.hidden
 
       %a{:id=>"back-to-top", :title=>"#{t('layouts.application.back_to_top')}", :href=>"#"}
         &#8679;

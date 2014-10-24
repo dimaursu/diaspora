@@ -2,14 +2,14 @@
   = AppConfig.settings.pod_name + " / " + t('devise.sessions.new.sign_in')
 
 .container-fluid#login
-  .row-fluid
-    .span12.text-center
+  .row
+    .col-md-12.text-center
       .branding-asterisk
       %h1
         = AppConfig.settings.pod_name
 
-  .row-fluid
-    .span4.offset4
+  .row
+    .col-md-4.col-md-offset-4
       = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-signin'}, :autocomplete => 'off' do |f|
         %fieldset
           = f.text_field :username, 

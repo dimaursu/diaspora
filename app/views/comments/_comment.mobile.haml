@@ -12,7 +12,7 @@
       = person_image_link(comment.author)
       = person_link(comment.author)
       .info
-        %span
+        .col-md-
           = timeago(comment.created_at ? comment.created_at : Time.now)
 
     %div{:class => direction_for(comment.text)}

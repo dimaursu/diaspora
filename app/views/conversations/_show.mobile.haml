@@ -12,7 +12,7 @@
   - for participant in conversation.participants
     = person_image_link(participant, :size => :thumb_small)
 
-.span-15.last
+.col-md--15.last
   .stream
     = render :partial => 'messages/message', :collection => conversation.messages
 

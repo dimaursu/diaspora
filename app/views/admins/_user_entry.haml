@@ -2,15 +2,15 @@
 %li.user.media
   %div.pull-left
     - if user.person
-      %span.media-object
+      .col-md-.media-object
         = person_image_tag(user.person)
 
   %div.media-body.row
     %div.pull-right
-      %span.label
+      .col-md-.label
         = t('.id')
         = user.id
-      %span.label.label-info
+      .col-md-.label.label-info
         = t('.guid')
         = user.person.guid if user.person
 
@@ -25,7 +25,7 @@
           %li= link_to t('admins.user_search.close_account'), admin_close_account_path(user), method: :post, data: { confirm: t('admins.user_search.are_you_sure') }, class: 'btn btn-danger btn-mini'
 
     %div.row
-      %div.span5
+      %div.col-md-5
         %dl.dl-horizontal
           %dt= t('username')
           %dd= user.username
@@ -41,15 +41,15 @@
           %dt= t('.account_closed')
           %dd
             - if user.person.closed_account
-              %span.badge.badge-warning= t('.yes')
+              .col-md-.badge.badge-warning= t('.yes')
             - else
-              %span.badge.badge-success= t('.no')
+              .col-md-.badge.badge-success= t('.no')
           %dt= t('.nsfw')
           %dd
             - if user.person.profile.nsfw
-              %span.badge.badge-warning= t('.yes')
+              .col-md-.badge.badge-warning= t('.yes')
             - else
-              %span.badge.badge-success= t('.no')
+              .col-md-.badge.badge-success= t('.no')
 
         %h4= t('layouts.header.profile')
 

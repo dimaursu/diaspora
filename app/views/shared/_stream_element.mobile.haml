@@ -33,13 +33,13 @@
       .comment_container
         .post_stats
           - if post.public?
-            %span.comment_count
+            .col-md-.comment_count
               = post.reshares.size
 
-          %span.comment_count
+          .col-md-.comment_count
             = post.comments.size
 
-          %span.like_count
+          .col-md-.like_count
             = post.likes.size
 
         %ul.comments
