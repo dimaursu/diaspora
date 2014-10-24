@@ -16,9 +16,8 @@ class HomeController < ApplicationController
       end
     elsif partial_dir.join("_show.html.haml").exist? ||
           partial_dir.join("_show.html.erb").exist?
-      render :show
+      render :show, layout: 'application'
     else
-      @css_framework = :bootstrap # Hack, port site to one framework
       render file: Rails.root.join("public", "default.html"),
              layout: 'application'
     end
