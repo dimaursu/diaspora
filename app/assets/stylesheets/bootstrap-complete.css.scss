@@ -1,9 +1,10 @@
-// Calling this file bootstrap would cause an infinite recursion during asset compilation.
+@import "bootstrap-sprockets";
 @import 'bootstrap';
-@import 'bootstrap-responsive';
+
+#front-page {
+    background-color: $primary;
+    background-image: image_url('couple.jpeg');
+    background-repeat: no-repeat;
+}
 
 
-// according to the docs, this is part of bootstrap 2.3.x
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
