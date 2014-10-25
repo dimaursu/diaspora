@@ -69,7 +69,7 @@ task :deploy => :environment do
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
 #      invoke 'foreman:restart'
-      queue 'bundle exec foreman start &'
+      queue 'RAILS_ENV=production bundle exec foreman start &'
     end
   end
 end
