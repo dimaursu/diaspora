@@ -1,7 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/foreman'
+#require 'mina/foreman'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
@@ -27,7 +27,6 @@ set :shared_paths, ['config/database.yml', 'config/diaspora.yml', 'log']
    set :user, 'dima'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
-set foreman_sudo, false
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -65,11 +64,12 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    invoke :'foreman:export'
+#    invoke :'foreman:export'
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      invoke 'foreman:restart'
+#      invoke 'foreman:restart'
+      queue 'bundle exec foreman start &'
     end
   end
 end
