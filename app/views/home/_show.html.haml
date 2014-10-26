@@ -1,0 +1,61 @@
+#front-page
+  .container
+    .row
+      .col-md-2
+        = image_tag 'branding/logo.png'
+      .col-md-6.col-md-push-4
+        = svg_tag 'flower.svg'
+    #steps.row
+      .col-md-4
+        %h2
+          Configure your
+          %abbr.helpful{:title => "A Diaspora installation"} pod
+        %img{:src => "assets/icons/cog.png"}/
+        %p
+          Look at
+          %code.helpful{:title => "General pod configuration (location to upload photos, SSL certs, etc.)"}
+            config/diaspora.yml.example
+          and
+          %code.helpful{:title => "mySQL username/password"}
+            config/database.yml.example
+          for help.
+      .col-md-4
+        %h2 Try it out
+        %img{:src => "assets/icons/smiley_laughing.png"}/
+        %p
+          Start by
+          = succeed "." do
+            %a{:href => "users/sign_up"} creating an account
+      .col-md-4
+        %h2 Make a contribution!
+        %img{:src => "assets/icons/pen_write.png"}/
+        %p
+          Make Diaspora even better! Fork the project on
+          = succeed "," do
+            %a{:href => "http://github.com/diaspora/diaspora/", :title => "github"} github
+    %footer
+      %h3 Useful Resources
+      %ul#links
+        %ul.section
+          %li
+            %a{:href => "http://github.com/diaspora/diaspora/", :title => "Git repository"} Codebase
+          %li
+            %a{:href => "http://wiki.diasporafoundation.org", :title => "Wiki on github"} Documentation
+        %ul.section
+          %li
+            %a{:href => "http://webchat.freenode.net/?channels=diaspora", :title => "#diaspora"} IRC - General
+          %li
+            %a{:href => "http://webchat.freenode.net/?channels=diaspora-dev", :title => "#diaspora-dev"} IRC - Development
+        %ul.section
+          %li
+            %a{:href => "http://groups.google.com/group/diaspora-discuss", :title => "General discussion mailing list"} Discussion - General
+          %li
+            %a{:href => "http://groups.google.com/group/diaspora-dev", :title => "Dev mailing list"} Discussion - Development
+        %ul.section
+          %li
+            %a{:href => "https://github.com/diaspora/diaspora/issues", :title => "Bug tracker"} Find  Report bugs
+          %li
+            %a{:href => "http://guides.rubyonrails.org/"} Learn more about Ruby On Rails!
+    #change-page
+      This page can be changed to a custom landing page by creating
+      %code app/views/home/_show.html.haml
