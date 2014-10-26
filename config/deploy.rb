@@ -1,7 +1,6 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-#require 'mina/foreman'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
@@ -64,12 +63,11 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-#    invoke :'foreman:export'
+    queue "RAILS_ENV=production bundle exec foreman start > #{shared_path}/log/foreman.txt 2>&1"
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-#      invoke 'foreman:restart'
-      queue 'RAILS_ENV=production bundle exec foreman start &'
+      queue "RAILS_ENV=production bundle exec foreman restart"
     end
   end
 end

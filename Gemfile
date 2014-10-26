@@ -171,7 +171,8 @@ group :production do # we don't install these on travis to speed up test runs
 
   # Process management
 
-  gem 'foreman', '0.62'
+  # gem 'foreman', '0.62'
+  gem 'foreman_restartable', :git => 'git://github.com/jmoses/foreman.git'
 
   # Redirects
 
