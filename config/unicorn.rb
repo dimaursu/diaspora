@@ -14,7 +14,7 @@ timeout AppConfig.server.unicorn_timeout.to_i
 
 @sidekiq_pid = nil
 
-#pid '/var/run/diaspora/diaspora.pid'
+pid "#{APP_ROOT}/../shared/pids/diaspora.pid" if Rails.env.production?
 #listen '/var/run/diaspora/diaspora.sock', :backlog => 2048
 
 
@@ -29,7 +29,7 @@ before_fork do |server, worker|
   unless AppConfig.single_process_mode?
     Sidekiq.redis {|redis| redis.client.disconnect }
   end
-  
+
   if AppConfig.server.embed_sidekiq_worker?
     @sidekiq_pid ||= spawn('bundle exec sidekiq')
   end

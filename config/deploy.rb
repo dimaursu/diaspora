@@ -45,6 +45,9 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
 
+  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/pids"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/pids]
+
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
 
@@ -63,11 +66,12 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-    queue "RAILS_ENV=production bundle exec foreman start > #{shared_path}/log/foreman.txt 2>&1"
+    queue "RAILS_ENV=production bundle exec foreman start > #{deploy_to}/#{shared_path}/log/foreman.txt 2>&1 &"
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      queue "RAILS_ENV=production bundle exec foreman restart"
+      queue "mkdir -p #{deploy_to}/#{current_path}/tmp/pids/"
+      queue "kill -HUP << #{deploy_to}/#{shared_path}/pids/diaspora.pid"
     end
   end
 end
