@@ -48,6 +48,7 @@ gem 'rack-cors', '0.2.9', :require => 'rack/cors'
 # CSS
 
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-rails'
 gem 'compass-rails',  '2.0.0'
 gem 'sass-rails',     '4.0.3'
 gem 'autoprefixer-rails'
@@ -171,8 +172,8 @@ group :production do # we don't install these on travis to speed up test runs
 
   # Process management
 
-  # gem 'foreman', '0.62'
-  gem 'foreman_restartable', :git => 'git://github.com/jmoses/foreman.git'
+  gem 'foreman', '0.62'
+  #gem 'foreman_restartable', :git => 'git://github.com/jmoses/foreman.git'
 
   # Redirects
 
