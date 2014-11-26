@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   before_action :mobile_switch
   before_action :gon_set_current_user
   before_action :gon_set_preloads
+  before_action :use_bootstrap
 
   inflection_method :grammatical_gender => :gender
 
@@ -150,10 +151,7 @@ class ApplicationController < ActionController::Base
     gon.preloads = {}
   end
 
-  def self.use_bootstrap_for *routes
-    before_filter -> {
-      @css_framework = :bootstrap
-      gon.bootstrap = true
-    }, only: routes.flatten
+  def use_bootstrap
+    -> { gon.bootstrap = true }
   end
 end
