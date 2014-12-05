@@ -6,17 +6,14 @@
       height: 14px;
       display: inline-block;
     }
-    .icon-ok, .icon-refresh {
-      padding-right: 5px;
+    .fa-check, {
       display: none;
     }
     &.selected {
-      .icon-ok { display: inline-block;}
-      .icon-refresh { display: none;}
+      .fa-check { display: inline-block;}
     }
     &.loading {
-      .icon-refresh { display: inline-block;}
-      .icon-ok { display: none;}
+      .fa-check { display: none;}
     }
     a {
       .text {

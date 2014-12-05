@@ -11,24 +11,26 @@
 - content_for :page_title do
   = @person.name
 
-.col-md--6
-  #profile
+.row
+  .col-md-12
+    #profile
     -# here be JS
 
-.col-md--18.last
-  .profile_header
-    -# more JS
+.row
+  .col-md-12
+    .profile_header
+      -# more JS
 
-  .stream_container
+    .stream_container
 
-    -if user_signed_in? && current_page?(person_path(current_user.person))
-      = render 'publisher/publisher', publisher_aspects_for(nil)
+      -if user_signed_in? && current_page?(person_path(current_user.person))
+        = render 'publisher/publisher', publisher_aspects_for(nil)
 
-    #main_stream.stream
-      -# JS
+      #main_stream.stream
+        -# JS
 
-    #paginate
-      .col-md-.loader.hidden
+      #paginate
+        .col-md-2.loader.hidden
 
-  %a{:id=>"back-to-top", :title=>"#{t('layouts.application.back_to_top')}", :href=>"#"}
-    &#8679;
+    %a{:id=>"back-to-top", :title=>"#{t('layouts.application.back_to_top')}", :href=>"#"}
+      &#8679;

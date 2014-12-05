@@ -2,20 +2,39 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
-%header
-  - unless current_user
-    .container{style: "position:relative;"}
-      = link_to content_tag(:div, nil, class: 'diaspora_header_logo branding-header-logo'), root_path
+.container#header
+  - if current_user
+    .row
+      .col-md-2.center.logo
+        = link_to root_path do
+          = image_tag 'branding/logo_plain.png'
+      .col-md-6.center
+        = image_tag 'top_banner.jpg'
+      .col-md-4
+        %ul#head_nav
+          %li.name
+            = t('notifier.hello', name: current_user.first_name)
+          %li
+            = link_to t('layouts.header.my_account'), local_or_remote_person_path(current_user.person)
+          %li
+            = link_to "logout", destroy_user_session_path, method: :delete
+        %ul.pull-right.more_links
+          %li
+            %a{href: "#"} Mai multe
+          %li
+            %a{href: "#"} Denunta
+          - if AppConfig.settings.invitations.open?
+            %li
+              %a{"data-toggle" => "modal", :href => "#invitationsModal"}
+                = t('shared.invitations.invite_your_friends')
 
-      %ul#landing_nav
-        - unless current_page?(controller: :registrations, action: :new)
-          %li= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'login'
-        %li= link_to t('devise.shared.links.sign_in'), new_user_session_path, class: 'login'
-      #lightbox
-        #lightbox-content
-          %a#lightbox-close-link(href='#')
-            [x]
-            =t('javascripts.header.close')
-          %img#lightbox-image
-          #lightbox-imageset
-      #lightbox-backdrop
+    = render 'shared/modal',
+        :path => new_user_invitation_path,
+        :id => 'invitationsModal',
+        :title => t('invitations.new.invite_someone_to_join')
+
+  - else
+    .row
+      .col-md-2
+        = link_to root_path do
+          = image_tag 'branding/logo.png'

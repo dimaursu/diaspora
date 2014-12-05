@@ -4,7 +4,6 @@
 @import 'ui'
 @import '_mixins'
 @import '_flash_messages'
-@import 'new_styles/_spinner'
 
 @import 'sidebar'
 @import 'leftnavbar'
@@ -21,7 +20,6 @@
 @import 'stream-faces'
 @import 'popover'
 @import 'report'
-@import 'new_styles/_forms'
 @import 'tag'
 @import 'photo'
 
@@ -335,25 +333,6 @@ ul.as-selections
       :size 16px
     :color #333
 
-input:not([type='submit']):not([type='reset']):not([type='hidden']):not(.as-input),
-textarea
-  @include border-radius(2px)
-  :background-color #fff
-  :color #000
-  :margin-top 1px
-  :font
-    :family "Arial", "Helvetica", sans-serif
-    :size 14px
-
-  :padding 0.3em
-
-  :display block
-  :border 1px solid #ccc
-  :height auto
-
-input[type='checkbox']
-  :width auto !important
-
 form p
   :position relative
   :padding 0
@@ -422,25 +401,8 @@ img.scaled_full
       :height 140px
 
 ul#settings_nav
-  :display inline
-  :padding 0
   :font
     :size large
-  :position absolute
-  :left 198px
-  :top 5px
-
-  > li
-    :display inline
-    :margin
-      :right 1em
-    :font
-      :weight 700
-
-    a
-      :padding 2px
-      :font
-        :weight normal
 
 .settings_pane
   :display none
@@ -492,27 +454,10 @@ input[type="search"]
   :margin 0px
 
 #section_header
-  :width 100%
-  :border
-    :bottom 2px solid #777
-  :position relative
-
   :margin
     :bottom 2em
   :padding
     :bottom 0.4em
-
-  h2
-    :display inline
-
-  .right
-    :margin
-      :top 10px
-
-  h4
-    :display inline
-    :margin
-      :left 1em
 
 .photo_options
   :color $text-grey
@@ -1348,13 +1293,12 @@ a.toggle_selector
   :left 0
   :top 0
   :padding
-    :top 50px
     :bottom 10px
   h1,h3
     :color #fff
     :text-overflow ellipsis
     :white-space nowrap
-  :background orange
+  :background $brand_primary
   &:hover
     #gs-skip-x
       @include opacity(0.4)
@@ -1457,10 +1401,11 @@ a.toggle_selector
   :height 20px
   #location_address
     :border none
-    :color #aaa
-    :height 10px
-    :width 430px
+    :color #aaaaaa
+    :height 1.7rem
+    :width 100%
     :float left
+    :font-size 1rem
   a#hide_location
     :position absolute
     :right 22px

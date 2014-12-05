@@ -1,5 +1,29 @@
 %footer
   .container
-    .branding-powered_by_diaspora
-    %ul#footer_nav
-      = render :partial =>'shared/links'
+    .row.first-line
+      %hr
+      %ul
+        %li Tips &amp Tricks
+        %li Despre CineMaPlace
+        %li FAQ
+        %li Contact
+        %li.facebook.pull-right
+          %span.fa-stack.fa-lg
+            %i.fa.fa-circle-thin.fa-stack-2x
+            %i.fa.fa-facebook.fa-stack-1x
+          Urmareste-ne pe facebook
+    .row
+      %hr.separator
+      %ul
+        %li Termeni legali
+        %li Confidentialitate date
+        %li Facut in Romania
+        %li &copy 2014 cinemaplace.ro
+    .row
+      %ul
+        %li Sitemap
+        %li
+          %a{:href => "http://greenad.ro"} GreeAd.ro
+        %li
+          %a{:href => "http://dimaursu.net"} dimaursu.net
+        %li= link_to(t('layouts.header.code') + " " + pod_version, "#{root_path.chomp('/')}/source.tar.gz", {:title => t('layouts.application.source_package')}) unless request.url.match(/joindiaspora.com/)

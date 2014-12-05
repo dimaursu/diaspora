@@ -42,19 +42,32 @@
       = og_page_specific_tags(@post)
 
     = include_gon(:camel_case => true)
-    %link{:href => "http://fonts.googleapis.com/css?family=Patrick+Hand&subset=latin,latin-ext",
-      :rel => "stylesheet", :type => "text/css"}
+    %link{:href =>'http://fonts.googleapis.com/css?family=Numans|Nobile:400,400italic,700,700italic',
+      :rel => 'stylesheet', :type => 'text/css'}
 
-  %body
+  %body{ :class => "#{controller_name} #{action_name}" }
     = flash_messages
-
     = yield :before_content
 
-    - if content_for?(:container_content)
-      .container
-        =  yield(:container_content)
-    - else
-      = content_for?(:content) ? yield(:content) : yield
+    .container#body
+      .row
+        // hacky shit. another layout needs to be used when the user is logged out
+        -if current_user
+          .col-md-2#leftNavBar
+            = render 'shared/left_sections'
+            = image_tag 'left_banner.jpg'
+
+
+        .col-md-7
+          - if content_for?(:container_content)
+            =  yield(:container_content)
+          - else
+            = content_for?(:content) ? yield(:content) : yield
+
+
+        .col-md-3.rightBar
+          = render 'shared/right_sections'
+          = image_tag 'right_banner.jpg'
 
     = yield :after_content
 

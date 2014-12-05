@@ -2,22 +2,26 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
-.col-md--12.last
-  .modal_title_bar
-    %h4=t('.title')
-  %p
-    =t('.outside')
-    %br
-    %br
-    = link_to t('.atom_feed'), "#{current_user.public_url}.atom"
-    %br
-    - if current_user.services
-      - for service in current_user.services
-        = t('.logged_in', :service => service.provider)
-        %br
+.modal-dialog
+  .modal-content
+    .modal-header
+      %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+        %i.fa.fa-times
+      %h4.modal-title
+        =t('.title')
+    .modal-body
+      =t('.outside')
+      %br
+      %br
+      = link_to t('.atom_feed'), "#{current_user.public_url}.atom"
+      %br
+      - if current_user.services
+        - for service in current_user.services
+          = t('.logged_in', :service => service.provider)
+          %br
 
-    = link_to t('.manage'), services_path
+      = link_to t('.manage'), services_path
+    .modal-footer
+      %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
 
-    %br
-    %br
-    = link_to t('ok'), '#', :class => "button", :onClick => '$.facebox.close();'
+

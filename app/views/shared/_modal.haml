@@ -1,12 +1,13 @@
-.modal.hide.fade{ :id => id, 
-                  :tabindex => '-1', 
-                  :role => 'dialog', 
-                  'aria-labelledby' => "#{id}Label", 
-                  'aria-hidden' => 'true', 
-                  'data-remote' => path}
-  .modal-header
-    %button.close{:type => 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' }
-      &times;
-    %h3{ :id => "#{id}Label"}
-      = title
-  .modal-body
+#invitationsModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "invitationsModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"}
+          %i.fa.fa-times
+        %h4.modal-title
+          = title
+      .modal-body
+        %a{ href: path } Click here to invite some friends!
+      .modal-footer
+        %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+

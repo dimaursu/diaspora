@@ -4,8 +4,8 @@
 
 = javascript_include_tag :home
 
-#new_status_message_pane
-  .col-md--15.last
+.row#new_status_message_pane
+  .col-md-7
     #facebox_header
       %h3
         = t('.mentioning', :person => @person.name)

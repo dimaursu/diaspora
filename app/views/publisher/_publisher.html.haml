@@ -1,4 +1,72 @@
-- if bootstrap?
-  = render :partial => 'publisher/publisher_bootstrap', :locals => { :aspect => aspect, :selected_aspects => selected_aspects,  :aspect_ids => aspect_ids }
-- else
-  = render :partial => 'publisher/publisher_blueprint', :locals => { :aspect => aspect, :selected_aspects => selected_aspects,  :aspect_ids => aspect_ids }
+-if publisher_explain
+  :javascript
+    $(document).ready(function() {
+        if( app.publisher ) app.publisher.triggerGettingStarted();
+      });
+
+.row#publisher{:class => ((aspect == :profile || publisher_open) ? "mention_popup" : "closed")}
+  .col-md-12.content_creation
+    = form_for(StatusMessage.new) do |status|
+      = status.error_messages
+      %params
+        .row#publisher_textarea_wrapper
+          .col-md-12
+            - if current_user.getting_started?
+              = status.text_area :fake_text, :rows => 2, :value => h(publisher_formatted_text), :tabindex => 1, :placeholder => "#{t('contacts.index.start_a_conversation')}...",
+                'data-title' => popover_with_close_html( '1. ' + t('shared.public_explain.share') ),
+                'data-content' => t('shared.public_explain.new_user_welcome_message'), class: 'form-control'
+            - else
+              = status.text_area :fake_text, :rows => 2, :value => h(publisher_formatted_text), :tabindex => 1, :placeholder => "#{t('contacts.index.start_a_conversation')}...",
+                class: 'form-control'
+            = status.hidden_field :text, :value => h(publisher_hidden_text), class: 'clear_on_submit'
+            #photodropzone_container
+              %ul#photodropzone
+            #location_container
+              = hidden_field :location, :coords
+            #button_container
+              #publisher-images.btn-group
+                #file-upload.btn.btn-default{:title => t('shared.publisher.upload_photos')}
+                  %i.fa.fa-upload
+                #locator.btn.btn-default{:title => t('shared.publisher.get_location')}
+                  %i.fa.fa-location-arrow
+                #hide_location.btn.btn-default{:title => t('shared.publisher.remove_location')}
+                  %i.fa.fa-remove
+
+      - if publisher_public
+        = hidden_field_tag 'aspect_ids[]', "public"
+      - elsif all_aspects_selected?(selected_aspects)
+        = hidden_field_tag 'aspect_ids[]', "all_aspects"
+      - else
+        - for aspect_id in aspect_ids
+          = hidden_field_tag 'aspect_ids[]', aspect_id.to_s
+
+      #publisher_spinner{:class => 'hidden'}
+        .fa.fa-spinner.fa-spin
+      .row.options_and_submit
+        .col-md-2.public_toggle
+          .btn.btn-default#hide_publisher{:title => t('shared.publisher.discard_post')}
+            =t('cancel')
+
+        .col-md-1.col-md-push-3#publisher_service_icons
+          - if current_user.services
+            - for service in current_user.services
+              = service_button(service)
+          %a.btn.btn-link{ :href => "#question_mark_pane", :class => 'fa fa-question', "data-toggle" => "modal", :title => t('shared.public_explain.manage') }
+            %i.fa.fa-gear
+
+        .col-md-6.col-md-push-3
+          = render :partial => "publisher/aspect_dropdown", :locals => { :selected_aspects => selected_aspects }
+
+          %button{ :disabled => ("disabled" if publisher_hidden_text.blank?), :class => 'btn btn-default post_preview_button'}
+            = t('shared.publisher.preview')
+
+          %button#submit.pull-right.btn.btn-info.creation{ :disabled => ("disabled" if publisher_hidden_text.blank?), :tabindex => 2}
+            = t('shared.publisher.share')
+
+      #question_mark_pane.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "question_mark_panelLabel", :role => "dialog", :tabindex => "-1"}
+        = render 'shared/public_explain'
+
+    = link_to '', contacts_path(:aspect_ids => aspect_ids), :class => 'selected_contacts_link hidden'
+
+    #publisher_photo_upload
+    %br

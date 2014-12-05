@@ -2,9 +2,7 @@
 -#   licensed under the Affero General Public License version 3 or later.  See
 -#   the COPYRIGHT file.
 
--# TODO: remove Blueprint classes when everything is ported to Bootstrap
-
-.col-md-6.col-md--12.last
+.col-md-6.col-md-push-3
   #facebox_header
     %h3
       = t('contacts.index.add_a_new_aspect')
@@ -24,5 +22,5 @@
     %br
 
     .bottom_submit_section
-      = submit_tag t('cancel'), :class => 'button btn', :type => :reset, :rel => "close"
-      = aspect.submit t('.create'), :class => 'button btn creation'
+      = submit_tag t('cancel'), :class => 'btn btn-default', :type => :reset, :rel => "close"
+      = aspect.submit t('.create'), :class => 'btn btn-primary'

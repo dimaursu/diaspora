@@ -1,33 +1,152 @@
-@import "bootstrap-sprockets";
+// variables
+
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'colors';
 // bootstrap 3 integration
+.publisher_photo > img {
+    width: 100%;
+}
+
+.btn-link {
+    color: $dark-blue;
+}
+
+.btn-link:hover {
+    color: $blue;
+}
 
 // Cine ma place assets
+@font-face {
+  font-family: 'Beautiful Every Time';
+  src: url('BeautifulEveryTime.eot?#iefix') format('embedded-opentype'),
+       url('BeautifulEveryTime.woff') format('woff'),
+       url('BeautifulEveryTime.ttf')  format('truetype')
+}
+
+#header {
+    position: relative;
+    top: 10px;
+}
+
+#body {
+    position: relative;
+    top: -10px;
+}
+
+.logo {
+    z-index: 1;
+}
+
+.btn-cmp {
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #ffed94 0%,#febf01 100%);
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.rightBar, #leftNavBar {
+    background: $brand_lightblue;
+}
+
+.rightBar {
+    padding-top: 12px;
+}
+// header
+
+#head_nav {
+    float: right;
+    li {
+        display: inline;
+    }
+    li + li::before {
+        content: "  |  ";
+    }
+
+}
+
+.more_links {
+    text-align: right;
+    margin-top: 7rem;
+}
+
+.sessions {
+    background-color: $brand_primary;
+
+    .flower {
+        background-image: image-url('flower.svg');
+        background-size: 100% 100%;
+        position: absolute;
+        width: inherit;
+        height: 440px;
+        top: 0;
+    }
+}
+
+p, div {
+    font-family: 'Nobile', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Numans', sans-serif;
+}
+
+
+#steps {
+    margin-top: 20rem;
+    margin-bottom: 3rem;
+}
+
 #front-page {
-    background-color: $primary;
-    background-image: image_url('couple.jpeg');
+    background-color: $brand_primary;
+    background-image: image-url('couple.jpeg');
     background-repeat: no-repeat;
     background-position: center top;
+
+    .motiv {
+        position: absolute;
+        top: 44%;
+        width: 35%;
+        left: 31%;
+    }
+
+    .login {
+        border-radius: 50%;
+        text-align: center;
+        position: relative;
+
+        .flower {
+            width: 100%;
+        }
+        .devil {
+            position: absolute;
+            bottom: 2em;
+            right: 47%;
+        }
+        p {
+            color: white;
+            font-size: 1.7rem;
+            font-family: 'Beautiful Every Time', cursive;
+        }
+    }
 
     .box {
         border: white 3px solid;
         border-radius: 4px;
-        background-color: $secondary;
+        background-color: $brand_secondary;
         color: white;
         padding: 10px;
-        display: table;
+        position: relative;
         height: 17rem;
 
         p {
             font-size: 1.5rem;
-            display: table-row;
         }
 
         h3 {
             text-shadow: black 9px 3px 9px;
-            display: table-cell;
-            vertical-align: bottom;
+            position: absolute;
+            bottom: 0;
         }
     }
 
@@ -37,26 +156,8 @@
         }
     }
 
-    footer {
-        color: #555;
-        .first-line {
-            color: #444;
-        }
-        li + li::before {
-            content: " | ";
-        }
-        li {
-            display: inline;
-        }
-
-        li.facebook::before {
-            content: none;
-        }
-
-        .separator {
-            border-top: 2px solid #808080;
-        }
+    .phone {
+        font-family: "Nobile";
     }
 }
-
 

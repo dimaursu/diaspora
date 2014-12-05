@@ -1,29 +1,25 @@
 - content_for :page_title do
   = AppConfig.settings.pod_name + " / " + t('devise.sessions.new.sign_in')
+- content_for :body_class, :login
 
-.container-fluid#login
+.container#login
+  .flower
   .row
-    .col-md-12.text-center
-      .branding-asterisk
-      %h1
-        = AppConfig.settings.pod_name
-
-  .row
-    .col-md-4.col-md-offset-4
+    .col-md-2.col-md-offset-5
       = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-signin'}, :autocomplete => 'off' do |f|
         %fieldset
-          = f.text_field :username, 
-                         :placeholder => t('registrations.new.username'), 
-                         :class => 'input-block-level form-control', 
-                         :required => true, 
-                         :pattern => '[A-Za-z0-9_.@\-]+', 
-                         :autocapitalize => 'off', 
-                         :autocorrect => 'off', 
+          = f.text_field :username,
+                         :placeholder => t('registrations.new.username'),
+                         :class => 'input-block-level form-control',
+                         :required => true,
+                         :pattern => '[A-Za-z0-9_.@\-]+',
+                         :autocapitalize => 'off',
+                         :autocorrect => 'off',
                          :autofocus => true
           %i.entypo.user
 
-          = f.password_field :password, 
-                             :placeholder => t('registrations.new.password'), 
+          = f.password_field :password,
+                             :placeholder => t('registrations.new.password'),
                              :class => 'input-block-level form-control',
                              :required => true
           %i.entypo.lock

@@ -25,6 +25,10 @@
         = owner_image_tag(:thumb_small)
 
       .bd
-        = form_for [conversation, Message.new] do |message|
-          = message.text_area :text, :class => .col-md-12', :rows => 5, :tabindex => 1
-          = message.submit t('.reply').capitalize, 'data-disable-with' => t('.replying'), class: 'btn btn-primary pull-right creation', tabindex: 2
+        = form_for [conversation, Message.new], html: { class: 'form-horizontal' } do |message|
+          .form-group
+            .col-md-10
+              = message.text_area :text, :rows => 5, :tabindex => 1, class: 'form-control'
+          .form-group
+            .col-md-2
+              = message.submit t('.reply').capitalize, 'data-disable-with' => t('.replying'), class: 'btn btn-primary pull-right creation', tabindex: 2

@@ -68,40 +68,6 @@
   }
 }
 
-/* via blueprint */
-html {
-  font-size: 100.01%;
-}
-
-/* via blueprint */
-body {
-  font: {
-    size: 75%;
-    family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  }
-  color: #222;
-  background: #fff;
-
-  margin-left: 100px;
-}
-
-/* via blueprint */
-input[type=text],
-input[type=password],
-textarea, select {
-  background-color: #fff;
-  border: 1px solid #bbb;
-}
-
-/* via blueprint */
-input[type=text]:focus,
-input[type=password]:focus,
-input.text:focus,
-input.title:focus,
-textarea:focus, select:focus {
-  border-color: #666;
-}
-
 #huge_text {
   font: {
     size: 40px;
@@ -110,53 +76,5 @@ textarea:focus, select:focus {
   line-height: 120px;
   color: #333;
   text-shadow: 0 1px 1px #999;
-}
-
-input {
-  font-size: 14px;
-}
-
-form p {
-  position: relative;
-  padding: 0;
-}
-
-label {
-  color: #999;
-  position: absolute;
-  padding-top: 7px;
-  left: 8px;
-  font: {
-    size: 14px;
-    weight: normal;
-  }
-}
-
-input[type='text'],
-input[type='password'] {
-  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
-  padding: 0.3em;
-  width: 395px;
-  border-top: 1px solid #999;
-}
-
-#user {
-  display: inline;
-  width: 500px;
-  .username {
-    width: 200px;
-    display: inline;
-
-    input {
-      display: inline;
-      width: 200px;
-    }
-  }
-
-  .user_network {
-    width: 200px;
-    display: inline;
-    font-size: 18px;
-  }
 }
 

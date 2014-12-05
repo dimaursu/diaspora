@@ -27,27 +27,26 @@
   });
 
 .col-md-6#new_conversation_pane
-  .col-md-5#facebox_header
+  #facebox_header
     %h3
       = t('conversations.index.new_conversation')
 
   = form_for Conversation.new, html: {class: "new_conversation form_do_not_clear"}, remote: true do |conversation|
 
-    .col-md-1
-      %h4
-        = t('.to')
-    .col-md-4
-      = text_field_tag "contact_autocomplete"
-    .clearfix
-    %br
-    .col-md-1
-      %h4
-        = t('.subject')
-    .col-md-4
-      = conversation.text_field :subject
-    %br
-    .col-md-4.col-md-offset-1
-      = text_area_tag "conversation[text]", '', :rows => 5
-    .clearfix
-    .bottom_submit_section
-      = conversation.submit t('.send'), 'data-disable-with' => t('.sending'), :class => 'button creation'
+    .row
+      .col-md-1
+        %h4
+          = t('.to')
+      .col-md-4
+        = text_field_tag "contact_autocomplete"
+    .row
+      .col-md-1
+        %h4
+          = t('.subject')
+      .col-md-4
+        = conversation.text_field :subject
+    .row
+      .col-md-4
+        = text_area_tag "conversation[text]", '', :rows => 5
+      .bottom_submit_section
+        = conversation.submit t('.send'), 'data-disable-with' => t('.sending'), :class => 'btn btn-primary'

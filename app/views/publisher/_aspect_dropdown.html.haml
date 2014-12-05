@@ -1,38 +1,33 @@
 .btn-group.aspect_dropdown
-  %button.btn.btn-default.dropdown-toggle{ ! current_user.getting_started? ? {'data-toggle' => 'dropdown'} : {'data-toggle' => 'dropdown', :title => popover_with_close_html("2. #{t('shared.public_explain.control_your_audience')}"), 'data-content'=> t('shared.public_explain.visibility_dropdown')} }
+  %button.btn.dropdown-toggle{ ! current_user.getting_started? ? {'data-toggle' => 'dropdown'} : {'data-toggle' => 'dropdown', :title => popover_with_close_html("2. #{t('shared.public_explain.control_your_audience')}"), 'data-content'=> t('shared.public_explain.visibility_dropdown')} }
     - if publisher_public
-      %i#visibility-icon.entypo.small.globe
-      .col-md-.text
-        = t('public')
+      %i#visibility-icon.fa.fa-globe
+      = t('public')
     - else
-      %i#visibility-icon.entypo.small.lock
-      .col-md-.text
-        - if all_aspects_selected?(selected_aspects)
-          = t('all_aspects')
-        - elsif selected_aspects.size == 1
-          = selected_aspects.first.name
-        - else
-          = t('shared.aspect_dropdown.toggle', count: selected_aspects.size)
-    .col-md-.caret
-  %ul.dropdown-menu.pull-right{ :unSelectable => 'on' }
+      %i#visibility-icon.fa.fa-lock
+      - if all_aspects_selected?(selected_aspects)
+        = t('all_aspects')
+      - elsif selected_aspects.size == 1
+        = selected_aspects.first.name
+      - else
+        = t('shared.aspect_dropdown.toggle', count: selected_aspects.size)
+    .fa.fa-sort-down
+  %ul.dropdown-menu{ :unSelectable => 'on' }
 
     %li.public.radio{"data-aspect_id" => "public", :class => ("selected" if publisher_public)}
       %a
-        .col-md-.status_indicator
-          %i.icon-ok
-        .col-md-.text
-          = t('public')
+        .status_indicator
+          %i.fa.fa-check
+        = t('public')
     %li.all_aspects.radio{"data-aspect_id" => "all_aspects", :class => ("selected" if (!publisher_public && all_aspects_selected?(selected_aspects)))}
       %a
-        .col-md-.status_indicator
-          %i.icon-ok
-        .col-md-.text
-          = t('all_aspects')
+        .status_indicator
+          %i.fa.fa-check
+        = t('all_aspects')
     %li.divider
     - for aspect in all_aspects
       %li.aspect_selector{ 'data-aspect_id' => aspect.id, :class => !all_aspects_selected?(selected_aspects) && selected_aspects.include?(aspect) ? "selected" : "" }
         %a
-          .col-md-.status_indicator
-            %i.icon-ok
-          .col-md-.text
-            = aspect.name
+          .status_indicator
+            %i.fa.fa-check
+          = aspect.name

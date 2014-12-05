@@ -4,7 +4,14 @@
       .col-md-2
         = image_tag 'branding/logo.png'
       .col-md-6.col-md-push-4
-        = svg_tag 'flower.svg'
+        .login
+          %p.motiv
+            Timiditatea nu-ți dă pace? Îți dăm noi curaj grămadă pentru a cunoaște
+            următoarea persoană cu care să flirtezi, să te distrezi sau...
+            să îți împarți inima!
+          = image_tag 'flower.svg', class: 'flower'
+          = link_to new_user_session_path do
+            = image_tag 'devil.svg', class: 'devil'
     #steps.row
       .col-md-3
         .box
@@ -78,27 +85,5 @@
       %h2.center sau la
       %h1.center.phone 0742 23 6373 (0742CeMePe)
 
-    %footer
-      .row.first-line
-        %ul
-          %li Tips &amp Tricks
-          %li Despre CineMaPlace
-          %li FAQ
-          %li Contact
-          %li.facebook.pull-right
-            %span.fa-stack.fa-lg
-              %i.fa.fa-circle-thin.fa-stack-2x
-              %i.fa.fa-facebook.fa-stack-1x
-            Urmareste-ne pe facebook
-        .separator
-      .row
-        %ul
-          %li Termeni legali
-          %li Confidentialitate date
-          %li Facut in Romania
-          %li &copy 2014 cinemaplace.ro
-      .row
-        %ul
-          %li Sitemap
-          %li web design GreeAd.ro
-          %li dimaursu.net
+= render 'layouts/footer'
+

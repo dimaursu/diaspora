@@ -62,10 +62,11 @@
 
   .clearfix
 
-  #file-upload.btn
+  #file-upload.btn.btn-default
     =t('.upload')
 
-  = image_tag('mobile-spinner.gif', :class => 'hidden', :style => "z-index:-1", :id => 'file-upload-spinner')
+  #file-upload-spinner{ class: 'hidden', style: 'z-index: -1' }
+    .fa.fa-spinner.fa-spin
 
   %p
     #fileInfo

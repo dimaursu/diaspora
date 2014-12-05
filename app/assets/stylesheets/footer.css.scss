@@ -1,22 +1,28 @@
+.sessions footer {
+    margin-top: 200px;
+}
+
 footer {
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  color: $text-grey;
+    color: $text-grey;
 
-  .container {
-    width: 95%;
-    margin: 4em auto 0 auto;
-    padding: 0.5em 0 1em 0;
-    border-top: 1px solid $border-grey;
-  }
+    .first-line {
+        color: #444;
+    }
+    li + li::before {
+        content: " | ";
+    }
+    li {
+        display: inline;
+    }
 
-  .branding-powered_by_diaspora {
-    display: inline-block;
-    margin-top: 3px;
-    height: 11px;
-    width: 145px;
-  }
+    li.facebook::before {
+        content: none;
+    }
+
+    .separator {
+        margin-top: -8px;
+        border-top: 2px solid #444;
+    }
 
   ul#footer_nav {
     margin: 0;

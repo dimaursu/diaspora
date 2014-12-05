@@ -3,7 +3,7 @@
 -# the COPYRIGHT file.
 
 .conversation_participants
-  .right
+  .pull-right
     = link_to(image_tag('deletelabel.png'), conversation_visibility_path(conversation), :method => 'delete', :data => { :confirm => "#{t('.delete')}?" }, :class => "remove")
 
   %h3{ :class => direction_for(conversation.subject) }
@@ -12,7 +12,7 @@
   - for participant in conversation.participants
     = person_image_link(participant, :size => :thumb_small)
 
-.col-md--15.last
+.col-md-7
   .stream
     = render :partial => 'messages/message', :collection => conversation.messages
 
