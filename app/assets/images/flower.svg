@@ -56,8 +56,8 @@
        color-interpolation-filters="sRGB"
        id="filter7019">
       <feGaussianBlur
-         stdDeviation="5.8285712"
-         id="feGaussianBlur7021" />
+         id="feGaussianBlur7021"
+         stdDeviation="5.8285712" />
     </filter>
     <linearGradient
        x1="537.46906"
@@ -624,67 +624,6 @@
              transform="translate(417.71428,15.142828)"
              id="path6141"
              style="fill:#ad3c8e;fill-opacity:1;stroke:#e8b71a;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-        </g>
-        <g
-           id="g7092">
-          <g
-             id="g7097">
-            <path
-               d="m 810.29547,439.65249 c -5.13393,0.26024 -9.76599,2.45171 -13.1875,5.84375 -3.49474,-1.33657 -7.06729,-3.09602 -10.71875,-5.34375 0,0 2.36594,4.9727 7.59375,9.40625 -1.79343,3.01757 -2.84375,6.51624 -2.84375,10.28125 0,11.15784 9.02966,20.21875 20.1875,20.21875 11.15784,0 20.21875,-9.06091 20.21875,-20.21875 0,-3.33739 -0.8483,-6.47614 -2.28125,-9.25 5.31206,-4.47061 7,-9.9375 7,-9.9375 -3.45135,2.24932 -6.8711,3.99757 -10.3125,5.28125 -3.68041,-3.86861 -8.86383,-6.28125 -14.625,-6.28125 -0.34868,0 -0.68691,-0.0174 -1.03125,0 z"
-               id="path7027"
-               style="fill:#000000;fill-opacity:1;stroke:#e8b71a;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
-            <text
-               x="796.78571"
-               y="467.00507"
-               id="text7088"
-               xml:space="preserve"
-               style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"><tspan
-                 x="796.78571"
-                 y="467.00507"
-                 id="tspan7090"
-                 style="font-weight:normal;fill:#ffffff;fill-opacity:1;-inkscape-font-specification:Open Sans">OK</tspan></text>
-          </g>
-          <text
-             x="661.84863"
-             y="289.90796"
-             id="text6112"
-             xml:space="preserve"
-             style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:150%;letter-spacing:0.09px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"><tspan
-               x="715.20972"
-               y="289.90796"
-               id="tspan6114"><tspan
-                 x="715.20972"
-                 y="289.90796"
-                 id="tspan6116"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand">Timiditatea nu-ți dă pace? </tspan><tspan
-                 dx="4.6993713"
-                 id="tspan6118"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand" /></tspan><tspan
-               x="684.38098"
-               y="319.90796"
-               id="tspan6120"><tspan
-                 x="684.38098"
-                 id="tspan6122"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand">Îți dăm noi curaj grămadă pentru a </tspan></tspan><tspan
-               x="688.07068"
-               y="349.90796"
-               id="tspan6124"><tspan
-                 x="688.07068"
-                 id="tspan6126"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand">cunoaște următoarea persoană cu </tspan></tspan><tspan
-               x="682.57391"
-               y="379.90796"
-               id="tspan6128"><tspan
-                 x="682.57391"
-                 dx="0 0 0 0 0 0 0 0 0 -0.090000004 0.090000302"
-                 id="tspan6130"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand">care să flirtezi, să te distrezi sau... </tspan></tspan><tspan
-               x="737.42688"
-               y="409.90796"
-               id="tspan6132"><tspan
-                 x="737.42688"
-                 id="tspan6134"
-                 style="text-align:start;text-anchor:start;fill:#ffffff;font-family:Patrick Hand;-inkscape-font-specification:Patrick Hand">să îți împarți inima!</tspan></tspan></text>
         </g>
       </g>
     </g>
