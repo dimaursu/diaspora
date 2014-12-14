@@ -1,4 +1,4 @@
-module JappixHelper
+module JsxcHelper
   def get_bosh_endpoint
     port = AppConfig.chat.server.bosh.port
     bind = AppConfig.chat.server.bosh.bind

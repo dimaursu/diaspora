@@ -200,30 +200,39 @@ ro:
     two: "%{count} contacte"
     zero: "contacte"
   conversations:
-    create:
-      sent: "Mesaj trimis"
-    destroy:
-      success: "Conversaţia a fost ştearsă cu succes"
+    index:
+      conversations_inbox: "Conversații"
+      new_conversation: "Conversație nouă"
+      no_conversation_selected: "nicio conversaţie selectată"
+      create_a_new_conversation: "începe o nouă conversație"
+      no_messages: "niciun mesaj"
+      inbox: "Casuta postala"
+    conversation:
+      participants: "Participanți"
+    show:
+      reply: "raspunde"
+      replying: "Răspund..."
+      delete: "sterge si blocheaza conversatia"
+    new:
+      to: "către"
+      subject: "subiect"
+      send: "Trimite"
+      sending: "Trimitere..."
+      abandon_changes: "Abandonezi schimbările?"
     helper:
       new_messages:
         few: "%{count} mesaje noi"
         one: "1 mesaj nou"
         other: "%{count} mesaje noi"
         zero: "Nu ai mesaje noi"
-    index:
-      inbox: "Casuta postala"
-      no_conversation_selected: "nicio conversaţie selectată"
-      no_messages: "niciun mesaj"
-    new:
-      abandon_changes: "Abandonezi schimbările?"
-      send: "Trimite"
-      sending: "Trimitere..."
-      subject: "subiect"
-      to: "către"
-    show:
-      delete: "sterge si blocheaza conversatia"
-      reply: "raspunde"
-      replying: "Răspund..."
+    create:
+      sent: "Mesaj trimis"
+      fail: "Mesaj invalid"
+      no_contact: "Hei, trebuie mai întîi să adauci contactul"
+    new_conversation:
+      fail: "Mesaj invalid"
+    destroy:
+      success: "Conversaţia a fost ştearsă cu succes"
   date:
     formats:
       birthday: "%B %d"
@@ -270,6 +279,7 @@ ro:
       whats_new: "ce mai e nou?"
       your_aspects: "aspectele tale"
     header:
+      my_accunt: "Contul meu"
       admin: "administrare"
       blog: "Blog"
       code: "codul"

@@ -4,21 +4,27 @@
       - if @contacts_size > 0 && @contacts_size < 20
         = start_a_conversation_link(@aspect, @contacts_size)
 
-      = link_to aspect_toggle_contact_visibility_path(@aspect), id: "contacts_visibility_toggle", method: :put, remote: true do
+      = link_to aspect_toggle_contact_visibility_path(@aspect), id: "contacts_visibility_toggle", class: "contacts_button", method: :put, remote: true do
         -if @aspect.contacts_visible?
-          %i.entypo.lock-open.contacts-header-icon{:title => t('aspects.edit.aspect_list_is_visible')}
+          %i.fa.fa-unlock.contacts-header-icon{:title => t('aspects.edit.aspect_list_is_visible')}
         -else
-          %i.entypo.lock.contacts-header-icon{:title => t('aspects.edit.aspect_list_is_not_visible')}
+          %i.fa.fa-lock.contacts-header-icon{:title => t('aspects.edit.aspect_list_is_not_visible')}
 
-      = link_to @aspect, method: "delete", data: { confirm: t('aspects.edit.confirm_remove_aspect') }, class: 'delete', id: 'delete_aspect' do
-        %i.entypo.trash.contacts-header-icon{:title => t('delete')}
+      = link_to aspect_toggle_chat_privilege_path(@aspect), id: "chat_privilege_toggle", class: "contacts_button", method: :put, remote: true do
+        -if @aspect.chat_enabled?
+          %i.fa.fa-wechat.enabled.contacts-header-icon{:title => t('aspects.edit.aspect_chat_is_enabled')}
+        -else
+          %i.fa.fa-wechat.contacts-header-icon{:title => t('aspects.edit.aspect_chat_is_not_enabled')}
+
+      = link_to @aspect, method: "delete", data: { confirm: t('aspects.edit.confirm_remove_aspect') }, class: 'delete contacts_button', id: 'delete_aspect' do
+        %i.fa.fa-trash.contacts-header-icon{:title => t('delete')}
     .pull-right
       = search_field_tag :contact_search, "", id: "contact_list_search", class: "search-query",  placeholder: t('contacts.index.user_search')
     %h3
-      .col-md-#aspect_name
+      %span#aspect_name
         = @aspect.name
-      .col-md-#change_aspect_name
-        %i.entypo.pencil.contacts-header-icon{:title => t('aspects.edit.rename')}
+      %span#change_aspect_name.contacts_button
+        %i.fa.fa-pencil.contacts-header-icon{:title => t('aspects.edit.rename')}
     #aspect_name_form
       = form_for @aspect, :remote => true do |aspect|
         = aspect.text_field :name, :maxlength => 20
@@ -33,4 +39,3 @@
           = t('contacts.index.all_contacts')
         - else
           = t('contacts.index.my_contacts')
-

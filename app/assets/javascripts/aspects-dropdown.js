@@ -4,7 +4,7 @@
 
 var AspectsDropdown = {
   updateNumber: function(dropdown, personId, number, inAspectClass){
-    var button = dropdown.parents(".dropdown").children('.button.toggle'),
+    var button = dropdown.parents(".aspect_dropdown").children('.btn.dropdown-toggle'),
         selectedAspects = dropdown.children(".selected").length,
         allAspects = dropdown.children().length,
         replacement,
@@ -36,13 +36,13 @@ var AspectsDropdown = {
 
     // if we are in the publisher, we add the visibility icon
     if (isInPublisher) {
-      var icon = $('#visibility-icon');      
+      var icon = $('#visibility-icon');
       if (replacement.trim() == Diaspora.I18n.t('stream.public')) {
-        icon.removeClass('lock');
-        icon.addClass('globe');
+        icon.removeClass('fa-lock');
+        icon.addClass('fa-globe');
       } else {
-        icon.removeClass('globe');
-        icon.addClass('lock');
+        icon.removeClass('fa-globe');
+        icon.addClass('fa-lock');
       }
       button.find('.text').text(replacement);
     } else {

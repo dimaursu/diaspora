@@ -35,9 +35,6 @@
 //= require view
 //= require aspects-dropdown
 //= require mentions
-//= require bootstrap/tooltip
-//= require bootstrap/popover
-//= require bootstrap/dropdown
-//= require bootstrap/modal
+//= require bootstrap-sprockets
 //= require osmlocator
-//= require diaspora-jappix-mini
+//= require jsxc

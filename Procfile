@@ -1,3 +1,3 @@
-web: bundle exec unicorn_rails -c config/unicorn.rb -p $PORT
+web: bundle exec rails server --port 3220
 sidekiq: bundle exec sidekiq
 xmpp: bundle exec vines start

@@ -140,10 +140,10 @@ https://github.com/diaspora/diaspora/issues/4202 for details
 "
 fi
 
-xmpp=""
+vines=0
 if [ "$chat" = "true" ] && [ "$chat_server" = "true" ]
 then
-  xmpp="xmpp=1,"
+  vines=1
   if [ "$chat_bosh_proxy" = "false" ]
   then
     warning "
@@ -173,4 +173,4 @@ else
 fi
 echo ""
 
-exec bundle exec foreman start -m "${xmpp}web=1,sidekiq=$workers" -p $port
+exec bundle exec foreman start -m "xmpp=$vines,web=1,sidekiq=$workers" -p $port

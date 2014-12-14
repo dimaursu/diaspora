@@ -55,7 +55,7 @@ module Diaspora
       home.js
       ie.js
       inbox.js
-      jappix.js
+      jsxc.js
       jquery.js
       jquery_ujs.js
       jquery.textchange.js
@@ -69,7 +69,6 @@ module Diaspora
       templates.js
       validation.js
 
-      blueprint.css
       bootstrap.css
       bootstrap-complete.css
       default.css
@@ -79,6 +78,8 @@ module Diaspora
       new-templates.css
       rtl.css
     }
+
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'

@@ -21,6 +21,11 @@
 
     %br
 
+    %p.checkbox_select
+      = aspect.check_box :chat_enabled, :checked => false, class: 'checkbox'
+      = aspect.label :chat_enabled, t('aspects.edit.grant_contacts_chat_privilege')
+
+    %br
     .bottom_submit_section
       = submit_tag t('cancel'), :class => 'btn btn-default', :type => :reset, :rel => "close"
       = aspect.submit t('.create'), :class => 'btn btn-primary'

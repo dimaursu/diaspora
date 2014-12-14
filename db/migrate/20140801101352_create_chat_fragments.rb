@@ -1,7 +1,7 @@
 class CreateChatFragments < ActiveRecord::Migration
   def up
     create_table :chat_fragments do |t|
-      t.integer :user_id, limit: 11, null: false
+      t.integer :user_id, null: false
       t.string :root, limit: 256, null: false
       t.string :namespace, limit: 256, null: false
       t.text :xml, null: false

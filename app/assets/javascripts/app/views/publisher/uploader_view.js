@@ -79,8 +79,8 @@ app.views.PublisherUploader = Backbone.View.extend({
       this.trigger('change');
       this.el_info.text(Diaspora.I18n.t('photo_uploader.error', {file: fileName}));
       this.publisher.el_wrapper.find('#photodropzone_container').first().after(
-        '<div id="upload_error">' + 
-        Diaspora.I18n.t('photo_uploader.error', {file: fileName}) + 
+        '<div id="upload_error">' +
+        Diaspora.I18n.t('photo_uploader.error', {file: fileName}) +
         '</div>'
       );
     }

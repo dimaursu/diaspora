@@ -11,7 +11,8 @@ gem 'actionpack-page_caching'
 
 # Appserver
 
-gem 'unicorn', '4.8.3', :require => false
+#gem 'passenger', '5.0.0.beta1'
+gem 'puma'
 
 # API and JSON
 
@@ -20,9 +21,9 @@ gem 'json',        '1.8.1'
 
 # Authentication
 
-gem 'devise', '3.3.0'
+gem 'devise', '3.4.1'
 gem 'devise_lastseenable', '0.0.4'
-gem 'devise-token_authenticatable', '~> 0.2.0'
+gem 'devise-token_authenticatable', '~> 0.3.0'
 
 # Captcha
 
@@ -121,8 +122,8 @@ gem 'twitter',           '4.8.1'
 gem 'omniauth-wordpress','0.2.1'
 
 # XMPP vines dependencies
-gem 'diaspora-vines', '~> 0.1.24'
-gem 'rails-assets-diaspora-jappix-mini', '0.1.2'
+gem 'diaspora-vines', '~> 0.1.25'
+gem 'rails-assets-diaspora_jsxc', '~> 0.0.4'
 
 # Tags
 
@@ -190,17 +191,20 @@ group :development do
   gem 'guard-rspec',    '4.3.1'
   gem 'rb-fsevent',     '0.9.4', :require => false
   gem 'rb-inotify',     '0.9.5', :require => false
+  gem 'guard-livereload', require: false
+  gem 'zapata'
 
   # Preloading environment
-
   gem 'guard-spork', '1.5.1'
   gem 'spork',       '1.0.0rc4'
 
   # Debugging
-  gem 'mina'
-  gem 'debugger'
   gem 'pry'
   gem 'pry-debundle'
+  gem 'meta_request'
+
+  # Deployment
+  gem 'mina'
 end
 
 group :test do

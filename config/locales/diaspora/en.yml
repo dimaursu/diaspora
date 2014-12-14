@@ -252,7 +252,7 @@ en:
       post_a_message: "post a message >>"
       people_sharing_with_you: "People sharing with you"
 
-      welcome_to_diaspora: "Welcome to diaspora*, %{name}!"
+      welcome_to_diaspora: "Welcome to %{pod_name}, %{name}!"
       introduce_yourself: "This is your stream.  Jump in and introduce yourself."
 
       new_here:
@@ -973,11 +973,11 @@ en:
       enter_password_again: "Enter the same password as before"
       hey_make: "HEY,<br/>MAKE<br/>SOMETHING."
       diaspora: "<3 diaspora*"
-      sign_up: "SIGN UP"
-      email: "EMAIL"
-      username: "USERNAME"
-      password: "PASSWORD"
-      password_confirmation: "PASSWORD CONFIRMATION"
+      sign_up: "Sign up"
+      email: "Email"
+      username: "Username"
+      password: "Password"
+      password_confirmation: "Password confirmation"
       continue: "Continue"
       submitting: "Submitting..."
       terms: "By creating an account you accept the %{terms_link}."

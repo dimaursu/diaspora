@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140906192846) do
+ActiveRecord::Schema.define(version: 20141024170120) do
 
   create_table "account_deletions", force: true do |t|
     t.string   "diaspora_handle"
@@ -43,12 +43,13 @@ ActiveRecord::Schema.define(version: 20140906192846) do
   add_index "aspect_visibilities", ["shareable_id", "shareable_type"], name: "index_aspect_visibilities_on_shareable_id_and_shareable_type", using: :btree
 
   create_table "aspects", force: true do |t|
-    t.string   "name",                            null: false
-    t.integer  "user_id",                         null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "contacts_visible", default: true, null: false
+    t.string   "name",                             null: false
+    t.integer  "user_id",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "contacts_visible", default: true,  null: false
     t.integer  "order_id"
+    t.boolean  "chat_enabled",     default: false
   end
 
   add_index "aspects", ["user_id", "contacts_visible"], name: "index_aspects_on_user_id_and_contacts_visible", using: :btree
@@ -78,6 +79,13 @@ ActiveRecord::Schema.define(version: 20140906192846) do
   end
 
   add_index "chat_fragments", ["user_id"], name: "index_chat_fragments_on_user_id", unique: true, using: :btree
+
+  create_table "chat_offline_messages", force: true do |t|
+    t.string   "from",       null: false
+    t.string   "to",         null: false
+    t.text     "message",    null: false
+    t.datetime "created_at", null: false
+  end
 
   create_table "comments", force: true do |t|
     t.text     "text",                                                null: false

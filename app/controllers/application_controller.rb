@@ -3,14 +3,12 @@
 #   the COPYRIGHT file.
 
 class ApplicationController < ActionController::Base
-  has_mobile_fu
   protect_from_forgery :except => :receive
 
   before_action :ensure_http_referer_is_set
   before_action :set_locale
   before_action :set_diaspora_header
   before_action :set_grammatical_gender
-  before_action :mobile_switch
   before_action :gon_set_current_user
   before_action :gon_set_preloads
   before_action :use_bootstrap
@@ -25,9 +23,44 @@ class ApplicationController < ActionController::Base
                 :tags,
                 :open_publisher
 
-  layout ->(c) { request.format == :mobile ? "application" : "centered_with_header_with_footer" }
+  layout "centered_with_header_with_footer"
 
   private
+
+  def set_up_contacts
+    type = params[:set].presence
+    type ||= "by_aspect" if params[:a_id].present?
+    type ||= "receiving"
+
+    @contacts = contacts_by_type(type)
+    @contacts_size = @contacts.length
+  end
+
+  def contacts_by_type(type)
+    contacts = case type
+      when "all"
+        [current_user.contacts]
+      when "only_sharing"
+        [current_user.contacts.only_sharing]
+      when "receiving"
+        [current_user.contacts.receiving]
+      when "by_aspect"
+        @aspect = current_user.aspects.find(params[:a_id])
+        @contacts_in_aspect = @aspect.contacts
+        @contacts_not_in_aspect = current_user.contacts.where.not(contacts: {id: @contacts_in_aspect.pluck(:id) })
+        [@contacts_in_aspect, @contacts_not_in_aspect].map {|relation|
+          relation.includes(:aspect_memberships)
+        }
+      else
+        raise ArgumentError, "unknown type #{type}"
+      end
+
+    contacts.map {|relation|
+      relation.includes(:person => :profile).to_a.tap {|contacts|
+        contacts.sort_by! {|contact| contact.person.name }
+      }
+    }.inject(:+)
+  end
 
   def ensure_http_referer_is_set
     request.env['HTTP_REFERER'] ||= '/'

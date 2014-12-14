@@ -40,7 +40,12 @@
     margin: 0px;
   }
 
-  label[for="aspect_contacts_visible"] {
+  .checkbox {
+      margin: 0px;
+  }
+
+  label[for="aspect_contacts_visible"],
+  label[for="aspec_chat_enabled"] {
     display: inline;
   }
 }

@@ -54,7 +54,6 @@
               = f.label :password_confirmation, t('password_confirmation'), class: 'control-label'
             .col-md-8
               = f.password_field :password_confirmation, placeholder: t('.character_minimum_expl'), class: 'form-control'
-
           .submit_block
             = link_to t('cancel'), edit_user_path, class: 'btn btn-link'
             = t('or')
@@ -68,7 +67,6 @@
           = t('.change_language')
         = form_for 'user', url: user_path, html: { class: 'form-inline', method: :put } do |f|
           = f.error_messages
-
           .form-group
             = f.select :language, available_language_options, {}, { class: 'form-control' }
             = f.submit t('.change_language'), class: "btn btn-primary"
@@ -77,41 +75,34 @@
 
     .row
       .col-md-12
-
         %h3#stream-preferences
           = t('.stream_preferences')
         = form_for current_user, url: user_path, html: { class: 'form-inline', method: :put } do |f|
           = f.error_messages
-
           = f.fields_for :stream_preferences do |type|
             #stream_prefs
               = f.label :show_community_spotlight_in_stream do
                 = f.check_box :show_community_spotlight_in_stream
                 = t('.show_community_spotlight')
-
               = f.label :getting_started do
                 = f.check_box :getting_started
                 = t('.show_getting_started')
-
             = f.submit t('.change'), class: 'btn btn-primary'
 
     %hr
 
     .row
       .col-md-12
-
         %h3#auto-follow-back-preferences
           = t('.following')
         = form_for current_user, url: user_path, html: { class: 'form-inline', method: :put } do |f|
           = f.error_messages
-
           = f.label :auto_follow_back do
             = f.check_box :auto_follow_back
             = t('.auto_follow_back')
           .muted
             = t('.auto_follow_aspect')
           = f.select :auto_follow_back_aspect_id, aspect_options_for_select(current_user.aspects), {}, { class: 'form-control' }
-
           = f.submit t('.change'), class: 'btn btn-primary'
 
     %hr
@@ -122,7 +113,6 @@
           = t('.receive_email_notifications')
         = form_for 'user', url: user_path, html: { class: 'form', method: :put } do |f|
           = f.error_messages
-
           = f.fields_for :email_preferences do |type|
             #email_prefs
               - if current_user.admin?
@@ -130,7 +120,6 @@
                   = type.label :someone_reported do
                     = type.check_box :someone_reported, {checked:  @email_prefs['someone_reported']}, false, true
                     = t('.someone_reported')
-
               .checkbox
                 = type.label :started_sharing do
                   = type.check_box :started_sharing, {checked:  @email_prefs['started_sharing']}, false, true
@@ -159,24 +148,20 @@
                 = type.label :private_message do
                   = type.check_box :private_message, {checked:  @email_prefs['private_message']}, false, true
                   = t('.private_message')
-
-
           = f.submit t('.change'), class: "btn btn-primary"
 
     %hr
 
     .row
-      #account_data.col-md-8
+      .col-md-8#account_data
         %h3
           = t('.export_data')
         = link_to t('.download_xml'), export_user_path, class: "btn btn-primary"
         = link_to t('.download_photos'), "#", class: "btn btn-primary", id: "photo-export-button", title: t('.photo_export_unavailable')
-
       .col-md-4
         %h3
           = t('.close_account_text')
         =link_to t('.close_account_text'), '#close_account_pane', rel: 'facebox', class: "btn btn-primary", id: "close_account"
-
         .hidden#close_account_pane{rel: 'facebox'}
           #inner_account_delete
             %h1
