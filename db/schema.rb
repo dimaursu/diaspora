@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141209041241) do
     t.string  "name"
     t.string  "ask",          limit: 128
     t.string  "subscription", limit: 128, null: false
+    t.text    "groups"
   end
 
   add_index "chat_contacts", ["user_id", "jid"], name: "index_chat_contacts_on_user_id_and_jid", unique: true, using: :btree
