@@ -13,28 +13,34 @@ describe StatisticsPresenter do
   end
 
   describe '#statistics contents' do
-
-    it 'provides generic pod data in json' do
+    before do
       AppConfig.privacy.statistics.user_counts = false
       AppConfig.privacy.statistics.post_counts = false
       AppConfig.privacy.statistics.comment_counts = false
-      AppConfig.services = {"facebook" => nil}
+    end
+
+    it 'provides generic pod data in json' do
       expect(@presenter.as_json).to eq({
         "name" => AppConfig.settings.pod_name,
+        "network" => "Diaspora",
         "version" => AppConfig.version_string,
         "registrations_open" => AppConfig.settings.enable_registrations,
-        "facebook" => false
+        "services"=> ["facebook",],
+        "facebook" => true,
+        "tumblr" => false,
+        "twitter" => false,
+        "wordpress" => false,
       })
     end
-    
+
     context 'when services are enabled' do
       before do
         AppConfig.privacy.statistics.user_counts = true
         AppConfig.privacy.statistics.post_counts = true
         AppConfig.privacy.statistics.comment_counts = true
         AppConfig.services = {
-          "facebook" => {"enable" => true}, 
-          "twitter" => {"enable" => true}, 
+          "facebook" => {"enable" => true},
+          "twitter" => {"enable" => true},
           "wordpress" => {"enable" => false},
           "tumblr" => {"enable" => false}
         }
@@ -43,6 +49,7 @@ describe StatisticsPresenter do
       it 'provides generic pod data and counts in json' do
         expect(@presenter.as_json).to eq({
           "name" => AppConfig.settings.pod_name,
+          "network" => "Diaspora",
           "version" => AppConfig.version_string,
           "registrations_open" => AppConfig.settings.enable_registrations,
           "total_users" => User.count,
@@ -50,6 +57,7 @@ describe StatisticsPresenter do
           "active_users_monthly" => User.monthly_actives.count,
           "local_posts" => @presenter.local_posts,
           "local_comments" => @presenter.local_comments,
+          "services" => ["twitter","facebook"],
           "facebook" => true,
           "twitter" => true,
           "tumblr" => false,
@@ -57,7 +65,5 @@ describe StatisticsPresenter do
         })
       end
     end
-
   end
-
 end

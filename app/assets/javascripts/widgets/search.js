@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 (function() {
   var Search = function() {
     var self = this;
@@ -8,6 +10,7 @@
         searchFormAction: searchForm.attr("action"),
         searchInput: searchForm.find("input[type='search']"),
         searchInputName: searchForm.find("input[type='search']").attr("name"),
+        searchInputHandle: searchForm.find("input[type='search']").attr("handle"),
         options: {
           cacheLength : 15,
           delay : 800,
@@ -31,11 +34,15 @@
       if (typeof row.search !== "undefined") {
         return Diaspora.I18n.t("search_for", row);
       } else {
-				if (row.avatar) {        
-					return "<img src='"+ row.avatar +"' class='avatar'/>" + row.name;
-				} else {
-					return row.name;				
-				}
+        var item = "";
+        if (row.avatar) {
+          item += "<img src='"+ row.avatar +"' class='avatar'/>";
+        }
+        item += row.name;
+        if (row.handle) {
+          item += "<div class='search_handle'>" + row.handle + "</div>";
+        }
+        return item;
       }
     };
 
@@ -73,3 +80,5 @@
 
   Diaspora.Widgets.Search = Search;
 })();
+// @license-end
+

@@ -180,6 +180,7 @@ en:
     contacts_visible: "Contacts in this aspect will be able to see each other."
     contacts_not_visible: "Contacts in this aspect will not be able to see each other."
     edit:
+      grant_contacts_chat_privilege: "grant contacts in aspect chat privilege?"
       make_aspect_list_visible: "make contacts in this aspect visible to each other?"
       remove_aspect: "Delete this aspect"
       confirm_remove_aspect: "Are you sure you want to delete this aspect?"
@@ -190,6 +191,8 @@ en:
       rename: "rename"
       aspect_list_is_visible: "Contacts in this aspect are able to see each other."
       aspect_list_is_not_visible: "Contacts in this aspect are not able to see each other."
+      aspect_chat_is_enabled: "Contacts in this aspect are able to chat with you."
+      aspect_chat_is_not_enabled: "Contacts in this aspect are not able to chat with you."
       update: "update"
       updating: "updating"
     aspect_contacts:
@@ -802,6 +805,22 @@ en:
         The diaspora* email robot!
 
         [1]: %{invite_url}
+    remove_old_user:
+      subject: "Your diaspora* account has been flagged for removal due to inactivity"
+      body: |-
+        Hello,
+        
+        It looks as though you no longer want your account at %{pod_url}, as you haven't used it for %{after_days} days. To ensure our active users get the best performance from this diaspora* pod, we'd like to remove unwanted accounts from our database.
+        
+        We'd love you to stay part of diaspora*'s community, and you're welcome to keep your account live if you want to.
+        
+        If you want to keep your account live, all you need to do is to sign in to your account before %{remove_after}. When you sign in, take a moment to have a look around diaspora*. It has changed a lot since you last looked in, and we think you'll like the improvements we've made. Follow some #tags to find content you love.
+        
+        Sign in here: %{login_url}. If you've forgotten your sign-in details, you can ask for a reminder on that page.
+        
+        Hoping to see you again,
+
+        The diaspora* email robot!
   people:
     zero: "no people"
     one: "1 person"
@@ -922,7 +941,7 @@ en:
     review_link: "Mark as reviewed"
     delete_link: "Delete item"
     confirm_deletion: "Are you sure to delete the item?"
-    not_found: "<u>The post/comment was not found. It seams that it was deleted by the user!</u>"
+    not_found: "<u>The post/comment was not found. It seems that it was deleted by the user!</u>"
     status:
       marked: "The report was marked as reviewed"
       destroyed: "The post was destroyed"
@@ -1169,6 +1188,8 @@ en:
       one: "Show one more comment"
       other: "Show %{count} more comments"
     hide_comments: "Hide all comments"
+    no_more_posts: "You have reached the end of the stream."
+    no_posts_yet: "There are no posts yet."
 
   tags:
     show:
@@ -1219,7 +1240,6 @@ en:
     tags:
       title: "Posts tagged: %{tags}"
       contacts_title: "People who dig this tag"
-      tag_prefill_text: "The thing about %{tag_name} is... "
 
     public:
       title: "Public Activity"
@@ -1272,21 +1292,22 @@ en:
 
       close_account:
         dont_go: "Hey, please don't go!"
-        make_diaspora_better: "We want you to help us make diaspora* better, so you should help us out instead of leaving. If you do want to leave, we want you to know what happens next."
+        make_diaspora_better: "We'd love you to stay and help us make diaspora* better instead of leaving. If you really do want to leave, however, here's what will happen next:"
         mr_wiggles: 'Mr Wiggles will be sad to see you go'
-        what_we_delete: "We will delete all of your posts and profile data as soon as humanly possible. Your comments will hang around, but they would be associated with your diaspora* ID instead of your name."
-        locked_out: "You will get signed out and locked out of your account."
-        lock_username: "This will lock your username if you decided to sign back up."
-        no_turning_back: "Currently, there is no turning back."
-        if_you_want_this: "If you really want this, type in your password below and click 'Close Account'"
+        what_we_delete: "We will delete all of your posts and profile data as soon as possible. Your comments on other people's posts will still appear, but they will be associated with your diaspora* ID rather than your name."
+        locked_out: "You will get signed out and locked out of your account until it has been deleted."
+        lock_username: "Your username will be locked. You will not be able create a new account on this pod with the same ID."
+        no_turning_back: "There is no turning back! If you're really sure, enter your password below."
+        if_you_want_this: "If you really want this to happen, type in your password below and click 'Close Account'"
 
     privacy_settings:
       title: "Privacy Settings"
       ignored_users: "Ignored Users"
       stop_ignoring: "Stop ignoring"
+      no_user_ignored_message: "You are currently ignoring no other user"
 
     destroy:
-      success: "Your account has been locked.  It may take 20 minutes for us to finish closing your account.  Thank you for trying diaspora*."
+      success: "Your account has been locked. It may take 20 minutes for us to finish closing your account. Thank you for trying diaspora*."
       no_password: "Please enter your current password to close your account."
       wrong_password: "The entered password didn't match your current password."
     getting_started:

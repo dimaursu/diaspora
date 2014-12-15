@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 app.Router = Backbone.Router.extend({
   routes: {
     "help": "help",
@@ -21,6 +23,7 @@ app.Router = Backbone.Router.extend({
     "followed_tags": "followed_tags",
     "tags/:name": "followed_tags",
     "people/:id/photos": "photos",
+    "people/:id/contacts": "profile",
 
     "people/:id": "profile",
     "u/:name": "profile"
@@ -81,7 +84,7 @@ app.Router = Backbone.Router.extend({
     this.renderPage(function() {
       return new app.pages.Profile({
         person_id: guid,
-        el: $('body > .container'),
+        el: $('body > .container-fluid'),
         streamCollection: app.collections.Photos,
         streamView: app.views.Photos
       });
@@ -103,6 +106,7 @@ app.Router = Backbone.Router.extend({
             {tagText: decodeURIComponent(name).toLowerCase()}
           );
       $("#author_info").prepend(followedTagsAction.render().el)
+      app.tags = new app.views.Tags({tagName: name});
     }
     this._hideInactiveStreamLists();
   },
@@ -147,8 +151,9 @@ app.Router = Backbone.Router.extend({
 
   profile: function() {
     this.renderPage(function() { return new app.pages.Profile({
-      el: $('body > .container')
+      el: $('body > .container-fluid')
     }); });
   }
 });
+// @license-end
 

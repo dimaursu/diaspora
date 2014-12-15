@@ -1,3 +1,4 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
 
 app.pages.Profile = app.views.Base.extend({
   events: {
@@ -11,7 +12,7 @@ app.pages.Profile = app.views.Base.extend({
     '#main_stream': 'streamView'
   },
 
-  tooltipSelector: '.profile_button div, .sharing_message_container',
+  tooltipSelector: '.profile_button .profile-header-icon, .sharing_message_container',
 
   initialize: function(opts) {
     if( !this.model ) {
@@ -52,14 +53,16 @@ app.pages.Profile = app.views.Base.extend({
     if( !this.model.has('profile') ) return false;
     return new app.views.ProfileSidebar({
       model: this.model,
-      photos: this.photos,
-      contacts: this.contacts
     });
   },
 
   headerView: function() {
     if( !this.model.has('profile') ) return false;
-    return new app.views.ProfileHeader({model: this.model});
+    return new app.views.ProfileHeader({
+      model: this.model,
+      photos: this.photos,
+      contacts: this.contacts
+    });
   },
 
   streamView: function() {
@@ -126,3 +129,5 @@ app.pages.Profile = app.views.Base.extend({
     this.$('#profile').removeClass('loading');
   }
 });
+// @license-end
+

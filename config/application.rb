@@ -58,9 +58,10 @@ module Diaspora
       jsxc.js
       jquery.js
       jquery_ujs.js
-      jquery.textchange.js
+      jquery-textchange.js
       mailchimp.js
       main.js
+      jsxc.js
       mobile.js
       profile.js
       people.js

@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 /*   Copyright (c) 2010-2012, Diaspora Inc.  This file is
  *   licensed under the Affero General Public License version 3 or later.  See
  *   the COPYRIGHT file.
@@ -8,7 +10,7 @@
 //= require ./publisher/aspect_selector_blueprint_view
 //= require ./publisher/getting_started_view
 //= require ./publisher/uploader_view
-//= require jquery.textchange
+//= require jquery-textchange
 
 app.views.Publisher = Backbone.View.extend({
 
@@ -46,9 +48,16 @@ app.views.Publisher = Backbone.View.extend({
     // init autoresize plugin
     this.el_input.autoResize({ 'extraSpace' : 10, 'maxHeight' : Infinity });
 
+    // if there is data in the publisher we ask for a confirmation
+    // before the user is able to leave the page
+    $(window).on('beforeunload', _.bind(this._beforeUnload, this));
+
     // sync textarea content
     if( this.el_hiddenInput.val() == "" ) {
       this.el_hiddenInput.val( this.el_input.val() );
+    }
+    if( this.el_input.val() == "" ) {
+      this.el_input.val( this.el_hiddenInput.val() );
     }
 
     // hide close and preview buttons, in case publisher is standalone
@@ -75,14 +84,14 @@ app.views.Publisher = Backbone.View.extend({
       this.close();
       this.showSpinner(true);
     });
-    
+
     // open publisher on post error
     this.on('publisher:error', function() {
       this.open();
       this.showSpinner(false);
     });
 
-    // resetting the poll view 
+    // resetting the poll view
     this.on('publisher:sync', function() {
       this.view_poll_creator.render();
     });
@@ -123,7 +132,7 @@ app.views.Publisher = Backbone.View.extend({
     this.view_uploader.on('change', this.checkSubmitAvailability, this);
 
     this.view_poll_creator = new app.views.PublisherPollCreator({
-      el: this.$('#publisher-poll-creator')
+      el: this.$('#poll_creator_container')
     });
     this.view_poll_creator.on('change', this.checkSubmitAvailability, this);
     this.view_poll_creator.render();
@@ -140,6 +149,7 @@ app.views.Publisher = Backbone.View.extend({
   setText: function(txt) {
     this.el_input.val(txt);
     this.el_hiddenInput.val(txt);
+    this.prefillText = txt;
 
     this.el_input.trigger('input');
     this.handleTextchange();
@@ -157,7 +167,7 @@ app.views.Publisher = Backbone.View.extend({
     if(evt){ evt.preventDefault(); }
 
     // Auto-adding a poll answer always leaves an empty box when the user starts
-    // typing in the last box. We'll delete the last one to avoid submitting an 
+    // typing in the last box. We'll delete the last one to avoid submitting an
     // empty poll answer and failing validation.
     this.view_poll_creator.removeLastAnswer();
 
@@ -376,7 +386,7 @@ app.views.Publisher = Backbone.View.extend({
 
     // enable input
     this.setInputEnabled(true);
-    
+
     // enable buttons
     this.setButtonsEnabled(true);
 
@@ -426,7 +436,7 @@ app.views.Publisher = Backbone.View.extend({
     else
       this.$('#publisher_spinner').addClass('hidden');
   },
-  
+
   checkSubmitAvailability: function() {
     if( this._submittable() ) {
       this.setButtonsEnabled(true);
@@ -470,8 +480,15 @@ app.views.Publisher = Backbone.View.extend({
     this.el_input.mentionsInput("val", function(value){
       self.el_hiddenInput.val(value);
     });
-  }
+  },
 
+  _beforeUnload: function(e) {
+    if(this._submittable() && this.el_input.val() != this.prefillText){
+      var confirmationMessage = Diaspora.I18n.t("confirm_unload");
+      (e || window.event).returnValue = confirmationMessage;       //Gecko + IE
+      return confirmationMessage;                                  //Webkit, Safari, Chrome, etc.
+    }
+  }
 });
 
 // jQuery helper for serializing a <form> into JSON
@@ -491,3 +508,5 @@ $.fn.serializeObject = function()
   });
   return o;
 };
+// @license-end
+

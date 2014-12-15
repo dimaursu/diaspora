@@ -15,6 +15,14 @@ class OpenGraphCache < ActiveRecord::Base
     t.add :url
   end
 
+  def image
+    if AppConfig.privacy.camo.proxy_opengraph_thumbnails?
+      Diaspora::Camo.image_url(self[:image])
+    else
+      self[:image]
+    end
+  end
+
   def self.find_or_create_by(opts)
     cache = OpenGraphCache.find_or_initialize_by(opts)
     cache.fetch_and_save_opengraph_data! unless cache.persisted?
@@ -22,16 +30,17 @@ class OpenGraphCache < ActiveRecord::Base
   end
 
   def fetch_and_save_opengraph_data!
-    response = OpenGraph.new(self.url)
+    object = OpenGraphReader.fetch!(self.url)
 
-    return if response.blank? || response.type.blank?
+    return unless object
 
-    self.title = response.title.truncate(255)
-    self.ob_type = response.type
-    self.image = response.images[0]
-    self.url = response.url
-    self.description = response.description
+    self.title = object.og.title.truncate(255)
+    self.ob_type = object.og.type
+    self.image = object.og.image.url
+    self.url = object.og.url
+    self.description = object.og.description
 
     self.save
+  rescue OpenGraphReader::NoOpenGraphDataError
   end
 end

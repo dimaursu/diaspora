@@ -1,3 +1,5 @@
+// @license magnet:?xt=urn:btih:0b31508aeb0634b347b8270c7bee4d411b5d4109&dn=agpl-3.0.txt AGPL-v3-or-Later
+
 Diaspora.I18n = {
   language: "en",
   locale: {
@@ -48,7 +50,7 @@ Diaspora.I18n = {
         }
       }
     }
-   
+
     return translatedMessage;
   },
 
@@ -60,7 +62,7 @@ Diaspora.I18n = {
     }
 
     try {
-      return _.template(this._resolve(locale, items), views || {});
+      return _.template(this._resolve(locale, items))(views || {});
     } catch (e) {
       if (typeof locale.fallback === "undefined") {
         return "";
@@ -77,3 +79,5 @@ Diaspora.I18n = {
       this.locale.data = arguments[0];
   }
 };
+// @license-end
+

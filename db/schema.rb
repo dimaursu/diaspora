@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024170120) do
+ActiveRecord::Schema.define(version: 20141209041241) do
 
   create_table "account_deletions", force: true do |t|
     t.string   "diaspora_handle"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.string  "name"
     t.string  "ask",          limit: 128
     t.string  "subscription", limit: 128, null: false
-    t.text    "groups"
   end
 
   add_index "chat_contacts", ["user_id", "jid"], name: "index_chat_contacts_on_user_id_and_jid", unique: true, using: :btree
@@ -558,6 +557,7 @@ ActiveRecord::Schema.define(version: 20141024170120) do
     t.text     "hidden_shareables"
     t.datetime "reset_password_sent_at"
     t.datetime "last_seen"
+    t.datetime "remove_after"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

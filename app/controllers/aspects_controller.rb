@@ -78,7 +78,7 @@ class AspectsController < ApplicationController
     render :json => { :id => @aspect.id, :name => @aspect.name }
   end
 
-   def toggle_chat_privilege
+  def toggle_chat_privilege
     @aspect = current_user.aspects.where(:id => params[:aspect_id]).first
 
     @aspect.chat_enabled = !@aspect.chat_enabled

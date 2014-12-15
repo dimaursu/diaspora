@@ -896,16 +896,6 @@ describe User, :type => :model do
         FactoryGirl.create(:user)
       }
 
-      before(:each) do
-        @old_autofollow_value = AppConfig.settings.autofollow_on_join?
-        @old_autofollow_user = AppConfig.settings.autofollow_on_join_user
-      end
-
-      after(:each) do
-        AppConfig.settings.autofollow_on_join = @old_followhq_value
-        AppConfig.settings.autofollow_on_join_user = @old_autofollow_user
-      end
-
       context "with autofollow sharing enabled" do
         it "should start sharing with autofollow account" do
           AppConfig.settings.autofollow_on_join = true
@@ -1005,7 +995,7 @@ describe User, :type => :model do
       end
     end
   end
-  
+
   describe "sign up" do
     before do
       params = {:username => "ohai",
@@ -1013,7 +1003,7 @@ describe User, :type => :model do
                 :password => "password",
                 :password_confirmation => "password",
                 :captcha => "12345",
-                
+
                 :person =>
                   {:profile =>
                     {:first_name => "O",
@@ -1033,6 +1023,32 @@ describe User, :type => :model do
       AppConfig.settings.captcha.enable = true
       expect(@user).to receive(:save_with_captcha).and_return(true)
       @user.sign_up
+    end
+  end
+  
+  describe "maintenance" do
+    before do
+      @user = bob
+      AppConfig.settings.maintenance.remove_old_users.enable = true
+    end
+    
+    it "#flags user for removal" do
+      remove_at = Time.now+5.days
+      @user.flag_for_removal(remove_at)
+      expect(@user.remove_after).to eq(remove_at)
+    end
+  end
+  
+  describe "#auth database auth maintenance" do
+    before do
+      @user = bob
+      @user.remove_after = Time.now
+      @user.save
+    end
+    
+    it "remove_after is cleared" do
+      @user.after_database_authentication
+      expect(@user.remove_after).to eq(nil)
     end
   end
 end

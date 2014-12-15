@@ -27,21 +27,55 @@ This release drops official support for the Ruby 1.9 series. This means we will 
 that work with it. However that doesn't mean we won't accept patches that improve running diaspora* on it.
 
 At the same time we adopt support for the Ruby 2.1 series and recommend running on the latest Ruby version of that branch. We continue to support the Ruby 2.0
-series and run our comphrensive testsuite against it.
+series and run our comprehensive test suite against it.
 
 ## Change in defaults.yml
 The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
+## Experimental chat feature
+This release adds experimental integration with XMPP for real-time chat. Please see  [our wiki](https://wiki.diasporafoundation.org/Vines) for further informations.
+
+## Change in statistics.json schema
+The way services are shown in the `statistics.json` route is changing. The keys relating to showing whether services are enabled or not are moving to their own container as `"services": {....}`, instead of having them all in the root level of the JSON.
+
+The keys will still be available in the root level within the 0.5 release. The old keys will be removed in the 0.6 release.
+
+## New maintenance feature to automatically expire inactive accounts
+Removing of old inactive users can now be done automatically by background processing. The amount of inactivity is set by `after_days`. A warning email will be sent to the user and after an additional `warn_days`, the account will be automatically closed.
+
+This maintenance is not enabled by default. Podmins can enable it by for example copying over the new settings under `settings.maintenance` to their `diaspora.yml` file and setting it enabled. The default setting is to expire accounts that have been inactive for 2 years (no login).
+
+## Camo integration to proxy external assets
+It is now possible to enable an automatic proxying of external assets, for example images embedded via Markdown or OpenGraph thumbnails loaded from insecure third party servers through a [Camo proxy](https://github.com/atmos/camo).
+
+This is disabled by default since it requires the installation of additional packages and might cause some traffic. Check the [wiki page](https://wiki.diasporafoundation.org/Installation/Camo) for more information and detailed installation instructions.
+
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
 * Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
-* Port testsuite to RSpec 3 [#5170](https://github.com/diaspora/diaspora/pull/5170)
+* Port test suite to RSpec 3 [#5170](https://github.com/diaspora/diaspora/pull/5170)
 * Port tag stream to Bootstrap [#5138](https://github.com/diaspora/diaspora/pull/5138)
 * Consolidate migrations, if you need a migration prior 2013, checkout the latest release in the 0.4.x series first [#5173](https://github.com/diaspora/diaspora/pull/5173)
 * Add tests for mobile sign up [#5185](https://github.com/diaspora/diaspora/pull/5185)
 * Display new conversation form on conversations/index [#5178](https://github.com/diaspora/diaspora/pull/5178)
 * Port profile page to Backbone [#5180](https://github.com/diaspora/diaspora/pull/5180)
-
+* Pull punycode.js from rails-assets.org [#5263](https://github.com/diaspora/diaspora/pull/5263)
+* Redesign profile page and port to Bootstrap [#4657](https://github.com/diaspora/diaspora/pull/4657)
+* Unify stream selection links in the left sidebar [#5271](https://github.com/diaspora/diaspora/pull/5271)
+* Refactor schema of statistics.json regarding services [#5296](https://github.com/diaspora/diaspora/pull/5296)
+* Pull jquery.idle-timer.js from rails-assets.org [#5310](https://github.com/diaspora/diaspora/pull/5310)
+* Pull jquery.placeholder.js from rails-assets.org [#5299](https://github.com/diaspora/diaspora/pull/5299)
+* Pull jquery.textchange.js from rails-assets.org [#5297](https://github.com/diaspora/diaspora/pull/5297)
+* Pull jquery.hotkeys.js from rails-assets.org [#5368](https://github.com/diaspora/diaspora/pull/5368)
+* Reduce amount of useless background job retries and pull public posts when missing [#5209](https://github.com/diaspora/diaspora/pull/5209)
+* Updated Weekly User Stats admin page to show data for the most recent week including reversing the order of the weeks in the drop down to show the most recent. [#5331](https://github.com/diaspora/diaspora/pull/5331)
+* Convert some cukes to RSpec tests [#5289](https://github.com/diaspora/diaspora/pull/5289)
+* Hidden overflow for long names on tag pages [#5279](https://github.com/diaspora/diaspora/pull/5279)
+* Always reshare absolute root of a post [#5276](https://github.com/diaspora/diaspora/pull/5276)
+* Convert remaining SASS stylesheets to SCSS [#5342](https://github.com/diaspora/diaspora/pull/5342)
+* Update rack-protection [#5403](https://github.com/diaspora/diaspora/pull/5403)
+* Cleanup diaspora.yml [#5426](https://github.com/diaspora/diaspora/pull/5426)
+* Replace `opengraph_parser` with `open_graph_reader` [#5462](https://github.com/diaspora/diaspora/pull/5462)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -50,6 +84,24 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Fix deformed getting started popover [#5227](https://github.com/diaspora/diaspora/pull/5227)
 * Use correct locale for invitation subject [#5232](https://github.com/diaspora/diaspora/pull/5232)
 * Initial support for IDN emails
+* Fix services settings reported by statistics.json [#5256](https://github.com/diaspora/diaspora/pull/5256)
+* Only collapse empty comment box [#5328](https://github.com/diaspora/diaspora/pull/5328)
+* Fix pagination for people/guid/contacts [#5304](https://github.com/diaspora/diaspora/pull/5304)
+* Fix poll creation on Bootstrap pages [#5334](https://github.com/diaspora/diaspora/pull/5334)
+* Show error message on invalid reset password attempt [#5325](https://github.com/diaspora/diaspora/pull/5325)
+* Fix translations on mobile password reset pages [#5318](https://github.com/diaspora/diaspora/pull/5318)
+* Handle unset user agent when signing out [#5316](https://github.com/diaspora/diaspora/pull/5316)
+* More robust URL parsing for oEmbed and OpenGraph [#5347](https://github.com/diaspora/diaspora/pull/5347)
+* Fix Publisher doesn't expand while uploading images [#3098](https://github.com/diaspora/diaspora/issues/3098)
+* Drop unneeded and too open crossdomain.xml
+* Fix hidden aspect dropdown on getting started page [#5407](https://github.com/diaspora/diaspora/pulls/5407)
+* Fix a few issues on Bootstrap pages [#5401](https://github.com/diaspora/diaspora/pull/5401)
+* Improve handling of the `more` link on mobile stream pages [#5400](https://github.com/diaspora/diaspora/pull/5400)
+* Fix prefilling publisher after getting started [#5442](https://github.com/diaspora/diaspora/pull/5442)
+* Fix overflow in profile sidebar [#5450](https://github.com/diaspora/diaspora/pull/5450)
+* Fix code overflow in SPV and improve styling for code tags [#5422](https://github.com/diaspora/diaspora/pull/5422)
+* Correctly validate if local recipients actually want to receive a conversation [#5449](https://github.com/diaspora/diaspora/pull/5449)
+* Improve consistency of poll answer ordering [#5471](https://github.com/diaspora/diaspora/pull/5471)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -58,6 +110,28 @@ The default for including jQuery from a CDN has changed. If you want to continue
 * Increased the number of notifications shown in drop down bar to 15 [#5129](https://github.com/diaspora/diaspora/pull/5129)
 * Increase possible captcha length [#5169](https://github.com/diaspora/diaspora/pull/5169)
 * Display visibility icon in publisher aspects dropdown [#4982](https://github.com/diaspora/diaspora/pull/4982)
+* Add a link to the reported comment in the admin panel [#5337](https://github.com/diaspora/diaspora/pull/5337)
+* Strip search query from leading and trailing whitespace [#5317](https://github.com/diaspora/diaspora/pull/5317)
+* Add the "network" key to statistics.json and set it to "Diaspora" [#5308](https://github.com/diaspora/diaspora/pull/5308)
+* Infinite scrolling in the notifications dropdown [#5237](https://github.com/diaspora/diaspora/pull/5237)
+* Maintenance feature to automatically expire inactive accounts [#5288](https://github.com/diaspora/diaspora/pull/5288)
+* Add LibreJS markers to JavaScript [5320](https://github.com/diaspora/diaspora/pull/5320)
+* Ask for confirmation when leaving a submittable publisher [#5309](https://github.com/diaspora/diaspora/pull/5309)
+* Allow page-specific styling via individual CSS classes [#5282](https://github.com/diaspora/diaspora/pull/5282)
+* Change diaspora logo in the header on hover [#5355](https://github.com/diaspora/diaspora/pull/5355)
+* Display diaspora handle in search results [#5419](https://github.com/diaspora/diaspora/pull/5419)
+* Show a message on the ignored users page when there are none [#5434](https://github.com/diaspora/diaspora/pull/5434)
+* Truncate too long OpenGraph descriptions [#5387](https://github.com/diaspora/diaspora/pull/5387)
+* Make the source code URL configurable [#5410](https://github.com/diaspora/diaspora/pull/5410)
+* Prefill publisher on the tag pages [#5442](https://github.com/diaspora/diaspora/pull/5442)
+
+# 0.4.1.2
+
+* Update Rails, fixes [CVE-2014-7818](https://groups.google.com/forum/#!topic/rubyonrails-security/dCp7duBiQgo).
+
+# 0.4.1.1
+
+* Fix XSS issue in poll questions [#5274](https://github.com/diaspora/diaspora/issues/5274)
 
 # 0.4.1.0
 
@@ -68,7 +142,7 @@ This release brings a new ToS feature that allows pods to easily display to user
     terms:
       enable: true
 
-When enabled, the footer and sidebar will have a link to terms page, and signup will have a disclaimer indicating that creating an account means the user accepts the terms of use.
+When enabled, the footer and sidebar will have a link to terms page, and sign up will have a disclaimer indicating that creating an account means the user accepts the terms of use.
 
 While the project itself doesn't restrict what kind of terms pods run on, we realize not all podmins want to spend time writing them from scratch. Thus there is a basic ToS template included that will be used unless a custom one available.
 

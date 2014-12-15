@@ -21,20 +21,27 @@ $(document).ready(function() {
             online: 1,
             chat: 1
           },
-          xmpp: {
-            url: $('script#jsxc').data('endpoint'),
-            username: jid.replace(/@.*?$/g, ''),
-            domain: jid.replace(/^.*?@/g, ''),
-            jid: jid,
-            password: data['token'],
-            resource: 'diaspora-jsxc',
-            overwrite: true,
-            onlogin: true
+          displayRosterMinimized: function() {
+            return true;
+          },
+          loginForm: {
+            form: '#jsxc_loginForm'
+          },
+          loadSettings: function() {
+            return {
+              xmpp: {
+                url: $('script#jsxc').data('endpoint'),
+                username: jid.replace(/@.*?$/g, ''),
+                domain: jid.replace(/^.*?@/g, ''),
+                jid: jid,
+                password: data['token'],
+                resource: 'diaspora-jsxc',
+                overwrite: true,
+                onlogin: true
+              }
+            }
           }
         });
-        // TODO unset debug on default (testing version)
-        jsxc.storage.setItem('debug', true);
-        jsxc.login();
       } else {
         console.error('No token found! Authenticated!?');
       }

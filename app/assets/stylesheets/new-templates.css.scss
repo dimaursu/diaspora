@@ -1,8 +1,11 @@
+@import 'bootstrap-fix';
+
+@import 'perfect-scrollbar';
+
 @import "colors";
 @import 'mixins';
 @import 'new_styles/new_mixins';
 @import 'new_styles/variables';
-@import 'perfect-scrollbar';
 
 /* core */
 @import 'flash_messages';
@@ -52,6 +55,7 @@
 /* people */
 @import 'people';
 @import 'invitations';
+@import 'profile';
 
 /* stream */
 @import 'tag';
@@ -63,3 +67,6 @@
 /* contacts */
 @import 'contacts';
 @import 'leftnavbar';
+
+/* code */
+@import 'new_styles/code';

@@ -7,6 +7,8 @@
   }
 }
 
+a.tag { color: $blue; }
+
 h1.tag {
   border-bottom: 2px dotted $blue;
   &:hover { border-bottom: 2px dotted $blue; }
@@ -22,5 +24,15 @@ h1.tag {
 }
 
 #tags_show {
-  .span3 { border-right: 1px solid $border-grey; }
+  .span3 {
+    border-right: 1px solid $border-grey;
+    .side_stream #people_stream {
+      .name { display: block; }
+      .name, .diaspora_handle, .tags {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
 }

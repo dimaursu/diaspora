@@ -10,14 +10,14 @@
 //= require jquery.remotipart
 //= require jquery.autoresize
 //= require jquery.charcount
-//= require jquery.placeholder
+//= require jquery-placeholder
 //= require rails-timeago
 //= require facebox
 //= require browser_detection
 //= require jquery.events.input
 //= require jquery.elastic
 //= require jquery.mentionsInput
-//= require jquery.idle-timer
+//= require jquery-idletimer/dist/idle-timer
 //= require jquery.infinitescroll-custom
 //= require jquery.autocomplete-custom
 //= require keycodes

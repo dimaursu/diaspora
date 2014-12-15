@@ -53,7 +53,7 @@ describe UsersController, :type => :controller do
       get :public, :username => @user.username, :format => :atom
       expect(response.body).to include('a href')
     end
-    
+
     it 'includes reshares in the atom feed' do
       reshare = FactoryGirl.create(:reshare, :author => @user.person)
       get :public, :username => @user.username, :format => :atom
@@ -210,12 +210,12 @@ describe UsersController, :type => :controller do
       expect(assigns[:email_prefs]['mentioned']).to be false
     end
 
-    #it 'does not allow token auth' do
-    #  sign_out :user
-    #  bob.reset_authentication_token!
-    #  get :edit, :auth_token => bob.authentication_token
-    #  response.should redirect_to new_user_session_path
-    #end
+    it 'does allow token auth' do
+      sign_out :user
+      bob.reset_authentication_token!
+      get :edit, :auth_token => bob.authentication_token
+      expect(response.status).to eq(200)
+    end
   end
 
   describe '#destroy' do

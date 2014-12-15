@@ -147,7 +147,7 @@ describe Diaspora::MessageRenderer do
       it 'should process text with both a hashtag and a link' do
         expect(
           message("Test #tag?\nhttps://joindiaspora.com\n").markdownified
-        ).to eq %{<p>Test <a class="tag" href="/tags/tag">#tag</a>?<br>\n<a href="https://joindiaspora.com" target="_blank">https://joindiaspora.com</a></p>\n}
+        ).to eq %{<p>Test <a class="tag" href="/tags/tag">#tag</a>?<br>\n<a href="https://joindiaspora.com" rel="nofollow" target="_blank">https://joindiaspora.com</a></p>\n}
       end
 
       it 'should process text with a header' do
@@ -170,6 +170,18 @@ describe Diaspora::MessageRenderer do
     it 'does not destroy hashtag that starts a line' do
       text = "#hashtag message"
       expect(message(text).plain_text_without_markdown).to eq text
+    end
+  end
+
+  describe "#urls" do
+    it "extracts the urls from the raw message" do
+      text = "[Perdu](http://perdu.com/) and [DuckDuckGo](https://duckduckgo.com/) can help you"
+      expect(message(text).urls).to eql ["http://perdu.com/", "https://duckduckgo.com/"]
+    end
+
+    it "extracts urls from continous markdown correctly" do
+      text = "[![Image](https://www.antifainfoblatt.de/sites/default/files/public/styles/front_full/public/jockpalfreeman.png?itok=OPjHKpmt)](https://www.antifainfoblatt.de/artikel/%E2%80%9Eschlie%C3%9Flich-waren-es-zu-viele%E2%80%9C)"
+      expect(message(text).urls).to eq ["https://www.antifainfoblatt.de/sites/default/files/public/styles/front_full/public/jockpalfreeman.png?itok=OPjHKpmt", "https://www.antifainfoblatt.de/artikel/%E2%80%9Eschlie%C3%9Flich-waren-es-zu-viele%E2%80%9C"]
     end
   end
 end

@@ -8,13 +8,12 @@ describe NotifierHelper, :type => :helper do
   describe '#post_message' do
     before do
       # post for truncate test
-      @post = FactoryGirl.create(:status_message)
-      @post.text = "hi dude! "*10
+      @post = FactoryGirl.create(:status_message, text: "hi dude! "*10)
       @truncated_post = "hi dude! hi dude! hi dude! hi dude! hi dude! hi dude! hi dude! hi dude! hi du..."
       # post for markdown test
-      @markdown_post = FactoryGirl.create(:status_message)
-      @markdown_post.text = "[link](http://diasporafoundation.org) **bold text** *other text*"
-      @striped_markdown_post = "link bold text other text"
+      @markdown_post = FactoryGirl.create(:status_message,
+        text: "[link](http://diasporafoundation.org) **bold text** *other text*")
+      @striped_markdown_post = "link (http://diasporafoundation.org) bold text other text"
     end
 
     it 'truncates in the post' do
@@ -37,7 +36,7 @@ describe NotifierHelper, :type => :helper do
       # comment for markdown test
       @markdown_comment = FactoryGirl.create(:comment)
       @markdown_comment.text = "[link](http://diasporafoundation.org) **bold text** *other text*"
-      @striped_markdown_comment = "link bold text other text"
+      @striped_markdown_comment = "link (http://diasporafoundation.org) bold text other text"
     end
 
     it 'truncates in the comment' do
