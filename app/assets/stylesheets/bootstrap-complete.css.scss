@@ -70,8 +70,9 @@
     margin-top: 7rem;
 }
 
-.action-sessions {
+.action-new {
     background-color: $brand_primary;
+    position: relative;
 
     .flower {
         background-image: image-url('flower.svg');
@@ -79,8 +80,16 @@
         position: absolute;
         width: inherit;
         height: 440px;
-        top: 0;
+        top: -165px;
     }
+
+    .form-signin {
+        margin-top: 45px;
+    }
+}
+
+#hovercard_container {
+    display: none;
 }
 
 p, div {
@@ -97,12 +106,12 @@ h1, h2, h3, h4, h5 {
     margin-bottom: 3rem;
 }
 
-#front-page {
+.page-home.action-show {
     background-color: $brand_primary;
     background-image: image-url('couple.jpeg');
     background-repeat: no-repeat;
     background-position: center top;
-
+}
     .motiv {
         position: absolute;
         top: 44%;
@@ -159,5 +168,7 @@ h1, h2, h3, h4, h5 {
     .phone {
         font-family: "Nobile";
     }
-}
 
+.right-ad {
+    margin-top: 200px;
+}

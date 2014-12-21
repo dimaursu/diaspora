@@ -45,26 +45,15 @@
 
   %body{ :class => "page-#{controller_name} action-#{action_name}" }
     = flash_messages
-    = yield :before_content
+    = render 'layouts/header_offline'
 
     .container#body
       .row
-        .col-md-2#leftNavBar
-          = render 'shared/left_sections'
-          = image_tag 'left_banner.jpg'
-
-
-        .col-md-7
+        .col-md-12
           - if content_for?(:container_content)
             =  yield(:container_content)
           - else
             = content_for?(:content) ? yield(:content) : yield
-
-
-        .col-md-3.rightBar
-          = render 'shared/right_sections'
-          .right-ad
-            = image_tag 'right_banner.jpg'
 
     = yield :after_content
 

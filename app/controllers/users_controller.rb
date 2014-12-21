@@ -5,7 +5,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, :except => [:new, :create, :public, :user_photo]
 
-  layout ->(c) { request.format == :mobile ? "application" : "with_header_with_footer" }, only: [:privacy_settings, :edit]
+  layout ->() { current_user ? 'application' : 'application_offline' }
 
   respond_to :html
 

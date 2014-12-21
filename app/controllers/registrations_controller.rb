@@ -5,7 +5,7 @@
 class RegistrationsController < Devise::RegistrationsController
   before_action :check_registrations_open_or_valid_invite!, :check_valid_invite!
 
-  layout ->(c) { request.format == :mobile ? "application" : "with_header" }, :only => [:new]
+  layout ->() { current_user ? 'application' : 'application_offline' }
 
   def create
     @user = User.build(user_params)
