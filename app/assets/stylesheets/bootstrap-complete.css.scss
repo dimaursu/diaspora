@@ -75,8 +75,7 @@
     position: relative;
 
     .flower {
-        background-image: image-url('flower.svg');
-        background-size: 100% 100%;
+        background: image-url('flower.svg') center center no-repeat;
         position: absolute;
         width: inherit;
         height: 440px;
