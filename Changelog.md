@@ -76,6 +76,8 @@ This is disabled by default since it requires the installation of additional pac
 * Update rack-protection [#5403](https://github.com/diaspora/diaspora/pull/5403)
 * Cleanup diaspora.yml [#5426](https://github.com/diaspora/diaspora/pull/5426)
 * Replace `opengraph_parser` with `open_graph_reader` [#5462](https://github.com/diaspora/diaspora/pull/5462)
+* Make sure conversations without any visibilities left are deleted [#5478](https://github.com/diaspora/diaspora/pull/5478)
+* Change tooltip for delete button in conversations view [#5477](https://github.com/diaspora/diaspora/pull/5477)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -102,6 +104,7 @@ This is disabled by default since it requires the installation of additional pac
 * Fix code overflow in SPV and improve styling for code tags [#5422](https://github.com/diaspora/diaspora/pull/5422)
 * Correctly validate if local recipients actually want to receive a conversation [#5449](https://github.com/diaspora/diaspora/pull/5449)
 * Improve consistency of poll answer ordering [#5471](https://github.com/diaspora/diaspora/pull/5471)
+* Fix broken aspect selectbox on asynchronous search results [#5488](https://github.com/diaspora/diaspora/pull/5488)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -124,6 +127,8 @@ This is disabled by default since it requires the installation of additional pac
 * Truncate too long OpenGraph descriptions [#5387](https://github.com/diaspora/diaspora/pull/5387)
 * Make the source code URL configurable [#5410](https://github.com/diaspora/diaspora/pull/5410)
 * Prefill publisher on the tag pages [#5442](https://github.com/diaspora/diaspora/pull/5442)
+* Allows users to export their data in JSON format from their user settings page [#5354](https://github.com/diaspora/diaspora/pull/5354)
+
 
 # 0.4.1.2
 

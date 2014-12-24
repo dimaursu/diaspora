@@ -62,6 +62,10 @@ class ApplicationController < ActionController::Base
     }.inject(:+)
   end
 
+  def default_serializer_options
+    {root: false}
+  end
+
   def ensure_http_referer_is_set
     request.env['HTTP_REFERER'] ||= '/'
   end
