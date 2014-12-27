@@ -11,7 +11,7 @@ gem 'actionpack-page_caching'
 
 # Appserver
 
-gem 'unicorn', '4.8.3', :require => false
+gem 'puma'
 
 # API and JSON
 
@@ -220,6 +220,7 @@ group :development do
   gem 'pry'
   gem 'pry-debundle'
   gem 'pry-byebug'
+  gem 'meta_request'
 end
 
 group :test do
