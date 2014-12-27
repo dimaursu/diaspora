@@ -4,6 +4,7 @@
 
 class HomeController < ApplicationController
   def show
+    @css_framework = :bootstrap # Hack, port site to one framework
     partial_dir = Rails.root.join('app', 'views', 'home')
     if user_signed_in?
       redirect_to stream_path
@@ -18,7 +19,6 @@ class HomeController < ApplicationController
           partial_dir.join("_show.html.erb").exist?
       render :show
     else
-      @css_framework = :bootstrap # Hack, port site to one framework
       render file: Rails.root.join("public", "default.html"),
              layout: 'application'
     end
