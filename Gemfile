@@ -216,6 +216,10 @@ group :development do
   gem 'spring-commands-rspec', '1.0.2'
   gem 'spring-commands-cucumber', '1.0.1'
 
+  # Deployment
+  
+  gem 'mina'
+
   # Debugging
   gem 'pry'
   gem 'pry-debundle'
