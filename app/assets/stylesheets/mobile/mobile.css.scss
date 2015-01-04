@@ -30,10 +30,6 @@ h3 {
   clear: both;
 }
 
-#app > * {
-  transition: all 0.25s ease;
-}
-
 #main {
   padding: 55px 10px 0px 10px;
 }
@@ -49,9 +45,9 @@ h3 {
   text-align: left;
   padding: 10px 0;
   min-height: 34px;
-  
+
   * { max-width: 100%; }
-  
+
   .avatar {
     @include border-radius(4px);
 
@@ -310,7 +306,7 @@ h3 {
 
   img {
     @include border-radius(4px);
-    
+
     height: 70px;
     width: 70px;
     margin: 10px;
@@ -319,7 +315,7 @@ h3 {
 
   .content {
     padding-left: 90px;
-    
+
     h2 {
       font-size: 20px;
       line-height: 20px;
@@ -334,7 +330,7 @@ h3 {
       color: $text-grey;
     }
   }
-  
+
   .bottom_bar {
     position: static;
   }

@@ -4,7 +4,6 @@ header {
   position: fixed;
   height: 45px;
   top: 0px;
-  z-index: 10;
   background: image-url('header-bg-long.jpg') rgb(40,35,35);
   @include box-shadow(0, 1px, 2px, #333);
   border-bottom: 1px solid #222;
@@ -58,16 +57,11 @@ header {
 #drawer {
   position: fixed;
   top: 0;
-  bottom: 0;
+  height: 100%;
   width: 100%;
   left: 100%;
   background-color: #444;
-
-          box-shadow: -2px 0px 2px 1px #333;
-       -o-box-shadow: -2px 0px 2px 1px #333;
-      -ms-box-shadow: -2px 0px 2px 1px #333;
-     -moz-box-shadow: -2px 0px 2px 1px #333;
-  -webkit-box-shadow: -2px 0px 2px 1px #333;
+  box-shadow: -2px 0px 2px 1px #333;
 
   header {
     position: static;
@@ -169,10 +163,20 @@ header {
 }
 
 /* This class is added when the user open the drawer */
-#app.draw > * {
-          transform: translateX(-80%);
-       -o-transform: translateX(-80%);
-      -ms-transform: translateX(-80%);
-     -moz-transform: translateX(-80%);
-  -webkit-transform: translateX(-80%);
+.draw {
+    #drawer, #main_nav {
+           transition: transform 0.3s ease;
+            transform: translateX(-80%);
+        -ms-transform: translateX(-80%);
+    -webkit-transform: translateX(-80%);
+    }
+}
+
+#drawer, #main_nav {
+    z-index: 10;
+
+        transition: transform 0.3s ease;
+        transform: translateX(0);
+    -ms-transform: translateX(0);
+-webkit-transform: translateX(0);
 }
