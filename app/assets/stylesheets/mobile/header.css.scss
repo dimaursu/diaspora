@@ -165,9 +165,7 @@ header {
 /* This class is added when the user open the drawer */
 .draw {
     #drawer, #main_nav {
-           transition: transform 0.3s ease;
             transform: translateX(-80%);
-        -ms-transform: translateX(-80%);
     -webkit-transform: translateX(-80%);
     }
 }
@@ -175,8 +173,9 @@ header {
 #drawer, #main_nav {
     z-index: 10;
 
-        transition: transform 0.3s ease;
-        transform: translateX(0);
-    -ms-transform: translateX(0);
--webkit-transform: translateX(0);
+            transition: transform 0.3s ease;
+    -webkit-transition: -webkit-transform 0.3s ease;
+             transform: translateX(0);
+     -webkit-transform: translateX(0);
 }
+
