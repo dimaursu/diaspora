@@ -11,7 +11,7 @@
 //= require jquery.autoSuggest.custom
 //= require fileuploader-custom
 //= require rails-timeago
-//= require hammer.min
+//= require hammer.js
 
 $(document).ready(function(){
 
