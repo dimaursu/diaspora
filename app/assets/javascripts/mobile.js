@@ -31,15 +31,18 @@ $(document).ready(function(){
 
   /* Drawer menu */
   $('#menu_badge').bind("tap click", function(evt){
+    evt.preventDefault();
     $("#app").toggleClass('draw');
   });
 
   var drawerSlide = new Hammer(document.getElementById('app'));
   drawerSlide.on('swipeleft', function(evt) {
+    evt.preventDefault();
     $("#app").addClass('draw');
   });
 
   drawerSlide.on('swiperight', function(evt) {
+    evt.preventDefault();
     $("#app").removeClass('draw');
   });
 
@@ -193,6 +196,8 @@ $(document).ready(function(){
       $.ajax({
         url: link.attr('href'),
         beforeSend: function(){
+          // prevent firing other ajax requests
+          link.removeClass('inactive');
           link.addClass('loading');
         },
         context: link,
@@ -200,14 +205,14 @@ $(document).ready(function(){
           var textarea = function(target) { return target.closest(".stream_element").find('textarea.comment_box').first()[0] };
           link.removeClass('loading')
 
-          if(!link.hasClass("add_comment_bottom_link")){
-            link.removeClass('inactive');
-          }
-
           container.hide();
           parent.append(data);
 
           MBP.autogrow(textarea($(this)));
+        },
+        error: function() {
+          // make the pencil icon tap-able again
+          link.addClass('inactive');
         }
       });
     }
