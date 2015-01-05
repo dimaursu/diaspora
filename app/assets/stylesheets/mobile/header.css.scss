@@ -1,8 +1,10 @@
 /* This file contains the CSS code corresponding to the header and the drawer (including the menu) of the mobile version */
 
+@import 'variables';
+
 header {
   position: fixed;
-  height: 45px;
+  height: $topbar_height;
   top: 0px;
   background: image-url('header-bg-long.jpg') rgb(40,35,35);
   @include box-shadow(0, 1px, 2px, #333);
@@ -112,8 +114,8 @@ header {
     width: 100%;
 
     li {
-      font-size: 25px;
-      line-height: 25px;
+      font-size: 1rem;
+      line-height: 1rem;
       font-weight: bold;
       color: $light-grey;
       border-bottom: solid rgb(53, 53, 53) 2px;
@@ -132,7 +134,7 @@ header {
       }
 
       > ul > li > a {
-        font-size: 14px;
+        font-size: 0.8rem;
         padding: 8px 42px;
       }
     }
@@ -142,9 +144,9 @@ header {
     }
 
     .avatar {
-      height: 35px;
-      width: 35px;
-      margin: -5px 5px;
+      height: 2rem;
+      width: 2rem;
+      margin: -0.5em 0.2rem;
       float: right;
     }
   }
@@ -162,20 +164,42 @@ header {
   }
 }
 
-/* This class is added when the user open the drawer */
-.draw {
+@media (max-width: $tablet) {
+    /* This class is added when the user open the drawer */
+    .draw {
+        #drawer, #main_nav {
+                transform: translateX(-80%);
+        -webkit-transform: translateX(-80%);
+        }
+    }
+
     #drawer, #main_nav {
-            transform: translateX(-80%);
-    -webkit-transform: translateX(-80%);
+        z-index: 10;
+
+                transition: transform 0.3s ease;
+        -webkit-transition: -webkit-transform 0.3s ease;
+                transform: translateX(0);
+        -webkit-transform: translateX(0);
     }
 }
 
-#drawer, #main_nav {
-    z-index: 10;
+// view on a large screen device
+@media (min-width: $tablet) {
+    #menu_badge {
+        display: none !important;
+    }
 
-            transition: transform 0.3s ease;
-    -webkit-transition: -webkit-transform 0.3s ease;
-             transform: translateX(0);
-     -webkit-transform: translateX(0);
+    #drawer {
+        width: 40%;
+        left: 0px;
+        top: $topbar_height;
+    }
+
+    #main_nav {
+        z-index: 10;
+    }
+
+    #main {
+        padding-left: 42% !important;
+    }
 }
-
