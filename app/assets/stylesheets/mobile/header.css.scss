@@ -60,7 +60,7 @@ header {
   position: fixed;
   top: 0;
   height: 100%;
-  width: 100%;
+  width: $drawer_width;
   left: 100%;
   background-color: #444;
   box-shadow: -2px 0px 2px 1px #333;
@@ -168,8 +168,8 @@ header {
     /* This class is added when the user open the drawer */
     .draw {
         #drawer, #main_nav {
-                transform: translateX(-80%);
-        -webkit-transform: translateX(-80%);
+                transform: translateX(-$drawer_width);
+        -webkit-transform: translateX(-$drawer_width);
         }
     }
 
@@ -190,7 +190,6 @@ header {
     }
 
     #drawer {
-        width: 40%;
         left: 0px;
         top: $topbar_height;
     }
@@ -200,6 +199,6 @@ header {
     }
 
     #main {
-        padding-left: 42% !important;
+        padding-left: $drawer_width + $gutter !important;
     }
 }
