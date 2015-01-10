@@ -7,7 +7,7 @@ header {
   height: $topbar_height;
   top: 0px;
   background: image-url('header-bg-long.jpg') rgb(40,35,35);
-  @include box-shadow(0, 1px, 2px, #333);
+  box-shadow: 0 1px 2px #333;
   border-bottom: 1px solid #222;
 }
 
@@ -41,7 +41,7 @@ header {
     }
 
     .badge_count {
-      @include border-radius(2px);
+      border-radius: 2px;
       z-index: 3;
       position: absolute;
       top: 3px;
@@ -79,8 +79,8 @@ header {
         right: 22%;
 
         input {
-          @include box-shadow(0, 1px, 1px, #444);
-          @include border-radius(15px);
+          box-shadow: 0 1px 1px #444;
+          border-radius: 15px;
           width: 100%;
           margin-top: 7px;
           background-color: #444;
@@ -99,8 +99,7 @@ header {
             background-color: white;
           }
 
-          &::-webkit-input-placeholder { text-shadow: none; }
-          &:-moz-placeholder { text-shadow: none; }
+          &:placeholder { text-shadow: none; }
         }
       }
     }
@@ -168,18 +167,14 @@ header {
     /* This class is added when the user open the drawer */
     .draw {
         #drawer, #main_nav {
-                transform: translateX(-$drawer_width);
-        -webkit-transform: translateX(-$drawer_width);
+            transform: translateX(-$drawer_width);
         }
     }
 
     #drawer, #main_nav {
         z-index: 10;
-
-                transition: transform 0.3s ease;
-        -webkit-transition: -webkit-transform 0.3s ease;
-                transform: translateX(0);
-        -webkit-transform: translateX(0);
+        transition: transform 0.3s ease;
+        transform: translateX(0);
     }
 }
 

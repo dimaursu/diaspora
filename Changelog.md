@@ -50,6 +50,11 @@ It is now possible to enable an automatic proxying of external assets, for examp
 
 This is disabled by default since it requires the installation of additional packages and might cause some traffic. Check the [wiki page](https://wiki.diasporafoundation.org/Installation/Camo) for more information and detailed installation instructions.
 
+## Paypal unhosted button and currency
+Podmins can now set the currency for donations, and use an unhosted button if they can't use
+a hosted one. Note: you need to **copy the new settings from diaspora.yml.example to your
+diaspora.yml file**. The existing settings from 0.4.x and before will not work any more.
+
 ## Refactor
 * Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
 * Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
@@ -79,6 +84,8 @@ This is disabled by default since it requires the installation of additional pac
 * Make sure conversations without any visibilities left are deleted [#5478](https://github.com/diaspora/diaspora/pull/5478)
 * Change tooltip for delete button in conversations view [#5477](https://github.com/diaspora/diaspora/pull/5477)
 * Replace a modifier-rescue with a specific rescue [#5491](https://github.com/diaspora/diaspora/pull/5491)
+* Port contacts page to backbone [#5473](https://github.com/diaspora/diaspora/pull/5473)
+* Replace CSS vendor prefixes automatically [#5532](https://github.com/diaspora/diaspora/pull/5532)
 
 ## Bug fixes
 * orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
@@ -106,6 +113,8 @@ This is disabled by default since it requires the installation of additional pac
 * Correctly validate if local recipients actually want to receive a conversation [#5449](https://github.com/diaspora/diaspora/pull/5449)
 * Improve consistency of poll answer ordering [#5471](https://github.com/diaspora/diaspora/pull/5471)
 * Fix broken aspect selectbox on asynchronous search results [#5488](https://github.com/diaspora/diaspora/pull/5488)
+* Replace %{third_party_tools} by the appropriate hyperlink in tags FAQ [#5509](https://github.com/diaspora/diaspora/pull/5509)
+* Repair downloading the profile image from Facebook [#5493](https://github.com/diaspora/diaspora/pull/5493)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
@@ -130,7 +139,8 @@ This is disabled by default since it requires the installation of additional pac
 * Prefill publisher on the tag pages [#5442](https://github.com/diaspora/diaspora/pull/5442)
 * Allows users to export their data in JSON format from their user settings page [#5354](https://github.com/diaspora/diaspora/pull/5354)
 * Don't include the content of non-public posts into notification mails [#5494](https://github.com/diaspora/diaspora/pull/5494)
-
+* Allow to set unhosted button and currency for paypal donation [#5452](https://github.com/diaspora/diaspora/pull/5452)
+* Add followed tags in the mobile menu [#5468](https://github.com/diaspora/diaspora/pull/5468)
 
 # 0.4.1.2
 
