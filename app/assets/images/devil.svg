@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="50"
+   height="50"
+   id="svg6211">
+  <defs
+     id="defs6213" />
+  <metadata
+     id="metadata6216">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-1002.3622)"
+     id="layer1">
+    <g
+       transform="translate(-786.32672,567.51045)"
+       id="g7097">
+      <path
+         d="m 810.29547,439.65249 c -5.13393,0.26024 -9.76599,2.45171 -13.1875,5.84375 -3.49474,-1.33657 -7.06729,-3.09602 -10.71875,-5.34375 0,0 2.36594,4.9727 7.59375,9.40625 -1.79343,3.01757 -2.84375,6.51624 -2.84375,10.28125 0,11.15784 9.02966,20.21875 20.1875,20.21875 11.15784,0 20.21875,-9.06091 20.21875,-20.21875 0,-3.33739 -0.8483,-6.47614 -2.28125,-9.25 5.31206,-4.47061 7,-9.9375 7,-9.9375 -3.45135,2.24932 -6.8711,3.99757 -10.3125,5.28125 -3.68041,-3.86861 -8.86383,-6.28125 -14.625,-6.28125 -0.34868,0 -0.68691,-0.0174 -1.03125,0 z"
+         id="path7027"
+         style="fill:#000000;fill-opacity:1;stroke:#e8b71a;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+    </g>
+  </g>
+  <text
+     x="10.195312"
+     y="31.884766"
+     id="text5938"
+     xml:space="preserve"
+     style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"><tspan
+       x="10.195312"
+       y="31.884766"
+       id="tspan5940"
+       style="font-size:20px;font-weight:normal;fill:#ffffff;font-family:Nobile;-inkscape-font-specification:Nobile">OK</tspan></text>
+</svg>

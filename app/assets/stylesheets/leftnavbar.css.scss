@@ -1,5 +1,9 @@
 #leftNavBar {
   color: #222222;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
 
   ul {
     margin: 0px;
@@ -45,4 +49,12 @@
   .hoverable:hover  > .action {
     display: block;
   }
+}
+
+.page-streams #leftNavBar {
+    margin-top: 42px;
+}
+
+.leftAd {
+    text-align: center;
 }
