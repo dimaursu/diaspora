@@ -44,11 +44,15 @@
   .ads.leftAd
     = image_tag 'left_banner.jpg'
 
-
-
-.span-19
+.span-14
   #aspect_stream_container.stream_container
     = render 'aspects/aspect_stream', :stream => @stream
+
+.span-5
+  .ads.rightAd
+    = image_tag 'right_banner.jpg'
+    = image_tag 'right_banner.jpg'
+    = image_tag 'right_banner.jpg'
 
   %a{:id=>"back-to-top", :title=>"#{t('layouts.application.back_to_top')}", :href=>"#"}
     &#8679;
