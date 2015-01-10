@@ -79,13 +79,13 @@ input.button {
   }
 
   &.creation {
-    @include button-gradient($creation-blue);
-    color: #fff;
+    background: radial-gradient(ellipse at center, $brand_yellow 0%, $brand_orange 100%);
+    color: black;
 
     border: 1px solid darken($button-border-color,20%);
 
     &:hover {
-      @include button-gradient-hover($creation-blue);
+      @include button-gradient-hover($brand_orange);
       border: 1px solid darken($button-border-color,35%);
     }
   }

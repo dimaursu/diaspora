@@ -1,0 +1,164 @@
+@import 'colors', 'mixins';
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.2rem;
+}
+
+#header {
+    position: relative;
+    top: 10px;
+}
+
+#body {
+    position: relative;
+    top: -10px;
+}
+
+.logo {
+    z-index: 1;
+}
+
+.btn-cmp {
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, #ffed94 0%,#febf01 100%);
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+#leftNavBar {
+    background: $brand_lightblue;
+}
+
+// header
+
+#head_nav {
+    float: right;
+    li {
+        display: inline;
+    }
+    li + li::before {
+        content: "  |  ";
+    }
+
+}
+
+.more_links {
+    text-align: right;
+    margin-top: 7rem;
+}
+
+
+#hovercard_container {
+    display: none;
+}
+
+
+#steps {
+    margin-top: 20rem;
+    margin-bottom: 3rem;
+}
+
+.page-home.action-show {
+    background-color: $brand_primary;
+    background-image: image-url('couple.jpeg');
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+.motiv {
+    position: absolute;
+    top: 44%;
+    width: 35%;
+    left: 31%;
+}
+
+.login {
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+
+    .flower {
+        width: 100%;
+    }
+    .devil {
+        position: absolute;
+        bottom: 2em;
+        right: 47%;
+    }
+    p {
+        color: white;
+        font-size: 1rem;
+        font-family: 'Beautiful Every Time', cursive;
+    }
+}
+
+.box {
+    border: white 3px solid;
+    border-radius: 4px;
+    background-color: $brand_secondary;
+    color: white;
+    padding: 10px;
+    position: relative;
+    height: 10rem;
+
+    p {
+        font-size: 1rem;
+    }
+
+    h3 {
+        text-shadow: black 9px 3px 9px;
+        position: absolute;
+        bottom: 0;
+        font-size: 1.2rem;
+    }
+}
+
+.intilniri {
+    h3, h2 {
+        color: white;
+    }
+}
+
+.phone {
+    font-family: "Nobile";
+}
+
+.rightAd {
+    margin-top: 4.2rem;
+}
+
+.leftAd {
+    text-align: center;
+}
+
+// positioning
+.page-streams .diaspora_header_logo {
+    height: 13rem;
+    width: 13rem;
+    margin-left: 5rem;
+}
+.stream_container {
+    padding-top: 4.2rem;
+}
+
+// fonts
+@font-face {
+  font-family: 'Beautiful Every Time';
+  src: url('BeautifulEveryTime.eot?#iefix') format('embedded-opentype'),
+       url('BeautifulEveryTime.woff') format('woff'),
+       url('BeautifulEveryTime.ttf')  format('truetype')
+}
+
+p, div {
+    font-family: 'Nobile', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Numans', sans-serif;
+}
+
+
