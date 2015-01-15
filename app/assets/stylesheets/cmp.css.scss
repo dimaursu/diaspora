@@ -1,6 +1,5 @@
 @import 'colors', 'mixins';
 
-
 html {
     font-size: 62.5%;
 }
@@ -76,6 +75,95 @@ body {
     left: 31%;
 }
 
+.action-new {
+    background-color: $brand_primary;
+
+    .flower {
+        background: image-url('flower.svg') center center no-repeat;
+        height: 46rem;
+        z-index: 1;
+    }
+
+    .form-signin {
+        margin-top: 166px;
+    }
+}
+
+.page-registrations {
+    .blue-background {
+        background: linear-gradient(to bottom, $brand_primary 8%, $brand_lightblue 40%) no-repeat;
+    }
+
+    .attention {
+        width: 60%;
+        margin: 0 auto;
+    }
+    h5, h6, .attention, #terms {
+        color: $brand_primary;
+    }
+    .attention, #terms, #profile_phone {
+        padding: 10px;
+    }
+
+    .flower > div {
+        width: 250px;
+        margin: 0px auto;
+        color: white;
+        padding-top: 21rem;
+    }
+}
+
+.mov {
+    color: $brand_primary;
+}
+
+.form-horizontal {
+    .control-label {
+        width: 120px;
+    }
+    .controls {
+        margin-left: 140px;
+        label {
+            display: inline-block;
+        }
+    }
+    #captcha {
+        .control-label {
+            width: 220px;
+            background: white;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .controls {
+            margin: 0;
+            padding: 10px 0;
+        }
+    }
+}
+
+hr {
+    clear: both;
+    border-top-color: $brand_primary;
+    border-bottom-color: lighten($brand_primary, 50%);
+}
+
+.heading {
+    color: $brand_primary;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: -1.8rem;
+}
+
+.short_description {
+    .controls {
+        margin-left: 100px;
+    }
+    .control-label {
+        width: 90px;
+    }
+}
+
 .login {
     border-radius: 50%;
     text-align: center;
@@ -91,7 +179,7 @@ body {
     }
     p {
         color: white;
-        font-size: 1rem;
+        font-size: 1.8rem;
         font-family: 'Beautiful Every Time', cursive;
     }
 }
@@ -103,17 +191,18 @@ body {
     color: white;
     padding: 10px;
     position: relative;
-    height: 10rem;
+    height: 14rem;
 
     p {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 
     h3 {
         text-shadow: black 9px 3px 9px;
         position: absolute;
         bottom: 0;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
+        margin: 0;
     }
 }
 

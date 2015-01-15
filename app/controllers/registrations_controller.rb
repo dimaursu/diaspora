@@ -10,6 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.build(user_params)
+    @user.profile.build(profile_params)
     @user.process_invite_acceptence(invite) if invite.present?
 
     if @user.sign_up
@@ -27,6 +28,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
+    @user = Person.new
+    @profile = @user.profile
     super
   end
 
@@ -55,6 +58,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   helper_method :invite
 
+  def profile_params
+    params.require(:profile).permit(:admire, :locality, :county, :phone, :date => [:year, :month, :day]) || {}
+  end
   def user_params
     params.require(:user).permit(:username, :email, :getting_started, :password, :password_confirmation, :language, :disable_mail, :invitation_service, :invitation_identifier, :show_community_spotlight_in_stream, :auto_follow_back, :auto_follow_back_aspect_id, :remember_me, :captcha, :captcha_key)
   end

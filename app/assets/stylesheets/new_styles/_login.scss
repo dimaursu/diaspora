@@ -75,20 +75,3 @@
   }
 }
 
-.action-new {
-    background-color: $brand_primary;
-
-    .flower {
-        background: image-url('flower.svg') center center no-repeat;
-        position: absolute;
-        width: 97%;
-        height: 37rem;
-        top: 0px;
-        z-index: -1;
-    }
-
-    .form-signin {
-        margin-top: 166px;
-    }
-}
-

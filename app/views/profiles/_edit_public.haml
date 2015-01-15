@@ -37,31 +37,132 @@
 %h3
   = t('profiles.edit.your_public_profile')
 
+%p
+  %strong
+    Pentru a avea acces la site, te rugam sa completezi campurile de mai jos. Nu mai exista alte cimpuri sau pasi
+    ascunsi pentru activarea contului tau! Un profil complet iti creste sansele sa iti gasesti perechea potrivita. Succes!
+%small.mov
+  Campurile marcate cu * sunt obligatorii
+
 = error_messages_for profile
-
-%h4
-  = t('profiles.edit.your_name')
-
-.row-fluid
-  .span6
+%hr
+.control-group
+  .control-label
     = label_tag 'profile[first_name]', t('profiles.edit.first_name')
-    = text_field_tag 'profile[first_name]', profile.first_name, :class => 'span12'
-  .span6
+  .controls
+    = text_field_tag 'profile[first_name]', profile.first_name
+
+.control-group
+  .control-label
     = label_tag 'profile[last_name]', t('profiles.edit.last_name')
-    = text_field_tag 'profile[last_name]', profile.last_name, :class => 'span12'
+  .controls
+    = text_field_tag 'profile[last_name]', profile.last_name
 
-.small-horizontal-spacer
+.control-group
+  .control-label
+    = t('profiles.edit.your_gender')
+  .controls
+    = label_tag 'profile[gender]', "femeie"
+    = radio_button_tag 'profile[gender]', 'femeie'
+    = label_tag 'profile[gender]', "barbat"
+    = radio_button_tag 'profile[gender]', 'barbat'
 
-%h4
-  = t('profiles.edit.your_tags')
+.control-group
+  %label.control-label{:for => "profile_admire"} Admir
+  .controls
+    = select :profile, :admire, [["un barbat", "b"], ["o femeie", "f"]], {}, {disabled: true}
 
-= text_field_tag 'profile[tag_string]', "", :placeholder => t('profiles.edit.your_tags_placeholder')
+%hr
+.control-group
+  %label.control-label{:for => "profile_locality"} Localitate
+  .controls
+    = select :profile, :locality, [["Valea calugareasca", "br"], ["bucuresti", "bc"]]
+.control-group
+  %label.control-label{:for => "profile_county"} Judet
+  .controls
+    = select :profile, :county, [["braila", "br"], ["bucuresti", "bc"]]
+.control-group
+  %label.control-label{:for => "profile_birthday"} Data nasterii
+  .controls
+    = select_date profile.birthday, { :prompt => true, :default => true, :order => t('date.order'), :start_year => 2000, :end_year => 1910, :prefix => 'profile[date]' }, { :class => 'span4' }
 
-.small-horizontal-spacer
+.control-group
+  %label.control-label{:for => "profile[phone]"} Telefon
+  .controls
+    = phone_field_tag "profile[phone]"
 
-%h4
-  = t('profiles.edit.your_photo')
+%hr
+%p.heading Vizibilitate profil
+.control-group
+  .control-label
+    = label_tag 'profile[visibility]', "vizibil"
+  .controls
+    = radio_button_tag 'profile[visibility]', 'vizibil'
+.control-group
+  .control-label
+    = label_tag 'profile[visibility]', "invizibil"
+  .controls
+    = radio_button_tag 'profile[visibility]', 'invizibil'
 
+%hr
+%p.heading Poza de profil
 = render 'photos/new_profile_photo', :aspect => aspect, :person => person
 
-.small-horizontal-spacer
+%hr
+%p.heading Scurta descriere
+.row.short_description
+  .span4
+    .control-group
+      %label.control-label{:for => "profile[height]"} Inaltime
+      .controls
+        = text_field_tag "profile[height]", "", { class: "span12", :placeholder => "cm" }
+    .control-group
+      %label.control-label{:for => "profile[weight]"} Greutate
+      .controls
+        = text_field_tag "profile[weight]", "", { class: "span12", :placeholder => "kg" }
+    .control-group
+      %label.control-label{:for => "profile[smoking]"} Fumator
+      .controls
+        = select :profile, :smoking, [["Da", true], ["Nu", false]], {}, class: "span12"
+  .span4
+    .control-group
+      %label.control-label{:for => "profile[profession]"} Profesie
+      .controls
+        = select :profile, :profession, [["Savant", "savant"], ["bucatar", "bucatar"], ["antreprenor", "antreprenor"]], {}, class: "span12"
+    .control-group
+      %label.control-label{:for => "profile[education]"} Educatie
+      .controls
+        = select :profile, :education, [["studii superioare", "sp"], ["liceu", "liceu"], ["sudii incomplete", "si"]], {}, class: "span12"
+    .control-group
+      %label.control-label{:for => "profile[civil_status]"} Stare civila
+      .controls
+        = select :profile, :civil_status, [["Casătorit", "casatorit"], ["divortat", "divortat"], ["celibatar", "celibatar"]], {}, class: "span12"
+    .control-group
+      %label.control-label{:for => "profile[childrens]"} Copii
+      .controls
+        = select :profile, :childrens, [["Nu am", "no"], ["Am", "yes"]], {}, class: "span12"
+  .span4
+    .control-group
+      %label.control-label{:for => "profile[constitution]"} Constitutie
+      .controls
+        = select :profile, :constitution, [["slab", "slab"], ["atletic", "atletic"]], {}, class: "span12"
+    .control-group
+      %label.control-label{:for => "profile[eye_color]"} Culoare ochi
+      .controls
+        = select :profile, :eye_color, [["albastri", "albastri"], ["caprui", "caprui"]], {}, class: "span12"
+    .control-group
+      %label.control-label{:for => "profile[hair_color]"} Culoare par
+      .controls
+        = select :profile, :hair_color, [["negru", "negru"], ["blond", "blond"]], {}, class: "span12"
+%hr
+%p.heading Interese
+.control-group
+  .control-label
+    = label_tag 'profile[tag_string]', "Descrie-te prin citeva hashtag-uri"
+  .controls
+    = text_field_tag 'profile[tag_string]', "", :placeholder => t('profiles.edit.your_tags_placeholder')
+.control-group
+  .control-label
+    = label_tag 'profile[bio]', "Ce faci toata ziua"
+  .controls
+    = text_area_tag 'profile[bio]', profile.bio, :rows => 5, :placeholder => t('fill_me_out'), :class => 'span12'
