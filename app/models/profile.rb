@@ -8,6 +8,11 @@ class Profile < ActiveRecord::Base
   include Diaspora::Federated::Base
   include Diaspora::Taggable
 
+  scope :unverified_phones,  -> { where(phone_verified: false) }
+
+  before_save :set_phone_attributes, if: :phone_verification_needed?
+  after_save :send_sms_for_phone_verification, if: :phone_verification_needed?
+
   attr_accessor :tag_string
   acts_as_taggable_on :tags
   extract_tags_from :tag_string
@@ -201,5 +206,30 @@ class Profile < ActiveRecord::Base
 
   def absolutify_local_url url
     "#{AppConfig.pod_uri.to_s.chomp("/")}#{url}"
+  end
+
+  # SMS profile validation
+  def set_phone_attributes
+    self.phone_verified = false
+    self.phone_v_code = generate_phone_verification_code
+
+    # removes all white spaces, hyphens, and parenthesis
+    self.phone_number.gsub!(/[\s\-\(\)]+/, '')
+  end
+
+  def send_sms_for_phone_verification
+    PhoneVerificationService.new(user_id: id).process
+  end
+
+  def generate_phone_verification_code
+    begin
+     verification_code = SecureRandom.hex(3)
+    end while self.class.exists?(phone_v_code: verification_code)
+
+    verification_code
+  end
+
+  def phone_verification_needed?
+    phone_number.present? && phone_number_changed?
   end
 end

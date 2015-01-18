@@ -11,6 +11,12 @@ class ProfilesController < ApplicationController
   respond_to :html, :except => [:show]
   respond_to :js, :only => :update
 
+  def verify_from_message
+    profile = get_profile_for_phone_verification
+    profile.mark_phone_as_verified! if profile
+
+    render nothing: true
+  end
   # this is terrible because we're actually serving up the associated person here;
   # however, this is the effect that we want for now
   def show
@@ -80,6 +86,14 @@ class ProfilesController < ApplicationController
       end
     end
     @profile_attrs[:tag_string] = (params[:tags]) ? params[:tags].gsub(',',' ') : ""
+  end
+
+  def get_profile_for_phone_verification
+    phone_verification_code = params['Body'].try(:strip)
+
+    condition = { phone_v_code: phone_verification_code, phone: phone }
+
+    Profile.unverified_phones.where(condition).first
   end
 
   def profile_params

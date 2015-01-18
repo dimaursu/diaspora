@@ -3,7 +3,6 @@ class AddFieldsToProfile < ActiveRecord::Migration
     add_column :profiles, :admire,           :string
     add_column :profiles, :locality,         :string
     add_column :profiles, :county,           :string
-    add_column :profiles, :phone,            :integer
     add_column :profiles, :height,           :integer
     add_column :profiles, :weight,           :integer
     add_column :profiles, :smoking,          :boolean
@@ -17,5 +16,8 @@ class AddFieldsToProfile < ActiveRecord::Migration
     add_column :profiles, :strengths,        :text
     add_column :profiles, :activation_code,  :integer
     add_column :profiles, :visibility,       :boolean
+    add_column :profiles, :phone,            :integer
+    add_column :profiles, :phone_v_code,     :integer
+    add_column :profiles, :phone_verified,   :boolean
   end
 end
