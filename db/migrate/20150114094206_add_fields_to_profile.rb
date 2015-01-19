@@ -16,8 +16,5 @@ class AddFieldsToProfile < ActiveRecord::Migration
     add_column :profiles, :strengths,        :text
     add_column :profiles, :activation_code,  :integer
     add_column :profiles, :visibility,       :boolean
-    add_column :profiles, :phone,            :integer
-    add_column :profiles, :phone_v_code,     :integer
-    add_column :profiles, :phone_verified,   :boolean
   end
 end

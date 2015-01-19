@@ -10,12 +10,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.build(user_params)
-    @user.profile.build(profile_params)
     @user.process_invite_acceptence(invite) if invite.present?
 
     if @user.sign_up
       flash[:notice] = I18n.t 'registrations.create.success'
       @user.seed_aspects
+      @user.update_profile(profile_params)
       sign_in_and_redirect(:user, @user)
       Rails.logger.info("event=registration status=successful user=#{@user.diaspora_handle}")
     else

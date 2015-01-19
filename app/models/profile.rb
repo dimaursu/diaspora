@@ -53,6 +53,10 @@ class Profile < ActiveRecord::Base
     self.construct_full_name
   end
 
+  def mark_phone_as_verified!
+    update!(phone_verified: true, phone_v_code: nil)
+  end
+
   def subscribers(user)
     Person.joins(:contacts).where(:contacts => {:user_id => user.id})
   end
@@ -180,6 +184,11 @@ class Profile < ActiveRecord::Base
     self.save
   end
 
+  def resend_another_verification_code
+    set_phone_attributes
+    send_sms_for_phone_verification
+  end
+
   protected
   def strip_names
     self.first_name.strip! if self.first_name
@@ -214,7 +223,7 @@ class Profile < ActiveRecord::Base
     self.phone_v_code = generate_phone_verification_code
 
     # removes all white spaces, hyphens, and parenthesis
-    self.phone_number.gsub!(/[\s\-\(\)]+/, '')
+    self.phone.gsub!(/[\s\-\(\)]+/, '')
   end
 
   def send_sms_for_phone_verification
@@ -224,12 +233,12 @@ class Profile < ActiveRecord::Base
   def generate_phone_verification_code
     begin
      verification_code = SecureRandom.hex(3)
-    end while self.class.exists?(phone_v_code: verification_code)
+    end while Profile.exists?(phone_v_code: verification_code)
 
     verification_code
   end
 
   def phone_verification_needed?
-    phone_number.present? && phone_number_changed?
+    phone.present? && phone_changed?
   end
 end

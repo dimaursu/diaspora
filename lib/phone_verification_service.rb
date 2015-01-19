@@ -2,7 +2,7 @@ class PhoneVerificationService
   attr_reader :user
 
   def initialize(options)
-    @user = User.find(options[:user_id])
+    @profile = User.find(options[:user_id]).profile
   end
 
   def process
@@ -12,15 +12,19 @@ class PhoneVerificationService
   private
 
   def to
-    "#{user.profile.phone}"
+    "#{@profile.phone}"
   end
 
   def body
-    "Introdu codul '#{user.phone_verification_code}' pentru a valida profilul"
+    "Introdu codul '#{@profile.phone_v_code}' pentru a valida profilul"
   end
 
   def sms_gateway
-    "http/sendmsg?user=timonovici&password=#{ENV["SMS_GWP"]}&api_id=3519684&to=#{to}&text=#{body}"
+    "http/sendmsg?" +
+    "user=#{Rails.application.secrets.sms_gateway_user}" +
+    "&password=#{Rails.application.secrets.sms_gateway_password}" +
+    "&api_id=#{Rails.application.secrets.sms_gateway_appid}" +
+    "&to=#{to}&text=#{body}"
   end
 
   def send_sms

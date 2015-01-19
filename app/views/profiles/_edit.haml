@@ -32,3 +32,17 @@
   .submit_block
     =yield(:submit_block)
 
+  - unless current_user.profile.phone_verified?
+    .activation.text-center
+      .activation-header
+        %h2 Activeaza contul
+      .activation-body
+        %p
+          %strong
+            Pentru a activa contul trebuie sa incarci contul primit de la CMP prin SMS!
+        = text_field_tag 'profile[phone_v_code]'
+        = submit_tag "Activeaza", :class => "btn creation"
+        %p
+          Daca ai sters din greseala codul primit prin SMS, sau nu l-ai primit in cele 24 de ore de la crearea contului mai
+          = link_to 'cere un cod de activare.', profile_request_verification_code_path, method: :post
+

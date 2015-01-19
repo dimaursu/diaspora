@@ -11,12 +11,13 @@ class ProfilesController < ApplicationController
   respond_to :html, :except => [:show]
   respond_to :js, :only => :update
 
-  def verify_from_message
-    profile = get_profile_for_phone_verification
-    profile.mark_phone_as_verified! if profile
-
-    render nothing: true
+  def request_verification_code
+    # request a new verfication code in case that the previous one was lost
+    current_user.profile.resend_another_verification_code
+    flash[:notice] = "Un nou cod de verificare a fost trimis"
+    redirect_to edit_profile_path
   end
+
   # this is terrible because we're actually serving up the associated person here;
   # however, this is the effect that we want for now
   def show
@@ -60,6 +61,9 @@ class ProfilesController < ApplicationController
       flash[:error] = I18n.t 'profiles.update.failed'
     end
 
+    # activate the profile if the right code is sent here
+    verify_from_message(@profile_attrs)
+
     respond_to do |format|
       format.js { render :nothing => true, :status => 200 }
       format.any {
@@ -75,6 +79,11 @@ class ProfilesController < ApplicationController
 
   private
 
+  def verify_from_message(params)
+    profile = get_profile_for_phone_verification(params)
+    profile.mark_phone_as_verified! if profile
+  end
+
   def munge_tag_string
     unless @profile_attrs[:tag_string].nil? || @profile_attrs[:tag_string] == I18n.t('profiles.edit.your_tags_placeholder')
       @profile_attrs[:tag_string].split( " " ).each do |extra_tag|
@@ -88,10 +97,10 @@ class ProfilesController < ApplicationController
     @profile_attrs[:tag_string] = (params[:tags]) ? params[:tags].gsub(',',' ') : ""
   end
 
-  def get_profile_for_phone_verification
-    phone_verification_code = params['Body'].try(:strip)
+  def get_profile_for_phone_verification(params)
+    phone_verification_code = params[:phone_v_code]
 
-    condition = { phone_v_code: phone_verification_code, phone: phone }
+    condition = { phone_v_code: phone_verification_code, phone: current_user.profile.phone }
 
     Profile.unverified_phones.where(condition).first
   end
@@ -100,7 +109,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:first_name, :last_name, :gender, :bio, :location,
                                     :locality, :county, :phone, :height, :weight, :smoking,
                                     :profession, :education, :civil_status, :childrens, :constitution,
-                                    :eye_color, :hair_color, :visibility,
+                                    :eye_color, :hair_color, :visibility, :phone_v_code,
                                     :searchable, :tag_string, :nsfw, :date => [:year, :month, :day]) || {}
   end
 end

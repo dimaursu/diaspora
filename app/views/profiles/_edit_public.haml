@@ -60,12 +60,12 @@
 
 .control-group
   .control-label
-    = t('profiles.edit.your_gender')
+    Sex
   .controls
     = label_tag 'profile[gender]', "femeie"
-    = radio_button_tag 'profile[gender]', 'femeie'
+    = radio_button :profile, :gender, 'femeie'
     = label_tag 'profile[gender]', "barbat"
-    = radio_button_tag 'profile[gender]', 'barbat'
+    = radio_button :profile, :gender, 'barbat'
 
 .control-group
   %label.control-label{:for => "profile_admire"} Admir
@@ -89,7 +89,7 @@
 .control-group
   %label.control-label{:for => "profile[phone]"} Telefon
   .controls
-    = phone_field_tag "profile[phone]"
+    = text_field :profile, :phone
 
 %hr
 %p.heading Vizibilitate profil
@@ -97,12 +97,12 @@
   .control-label
     = label_tag 'profile[visibility]', "vizibil"
   .controls
-    = radio_button_tag 'profile[visibility]', 'vizibil'
+    = radio_button :profile, :visibility, true
 .control-group
   .control-label
     = label_tag 'profile[visibility]', "invizibil"
   .controls
-    = radio_button_tag 'profile[visibility]', 'invizibil'
+    = radio_button :profile, :visibility, false
 
 %hr
 %p.heading Poza de profil
@@ -115,11 +115,11 @@
     .control-group
       %label.control-label{:for => "profile[height]"} Inaltime
       .controls
-        = text_field_tag "profile[height]", "", { class: "span12", :placeholder => "cm" }
+        = number_field :profile, :height, { class: "span12", :placeholder => "cm" }
     .control-group
       %label.control-label{:for => "profile[weight]"} Greutate
       .controls
-        = text_field_tag "profile[weight]", "", { class: "span12", :placeholder => "kg" }
+        = number_field :profile, :weight, { class: "span12", :placeholder => "kg" }
     .control-group
       %label.control-label{:for => "profile[smoking]"} Fumator
       .controls
@@ -140,7 +140,7 @@
     .control-group
       %label.control-label{:for => "profile[childrens]"} Copii
       .controls
-        = select :profile, :childrens, [["Nu am", "no"], ["Am", "yes"]], {}, class: "span12"
+        = select :profile, :childrens, [["Nu am", 0], ["Am", 1]], {}, class: "span12"
   .span4
     .control-group
       %label.control-label{:for => "profile[constitution]"} Constitutie

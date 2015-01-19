@@ -147,6 +147,7 @@ Diaspora::Application.routes.draw do
   resource :profile, :only => [:edit, :update]
   resources :profiles, :only => [:show]
 
+  post 'profile/request_verification_code' =>  'profiles#request_verification_code'
 
   resources :contacts,           :except => [:update, :create] do
   end
