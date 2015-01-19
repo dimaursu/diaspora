@@ -23,6 +23,7 @@ set :branch, 'boostrap2'
 set :shared_paths, [
   'config/database.yml',
   'config/diaspora.yml',
+  'config/secrets.yml',
   'log',
   'public/system',
   'public/uploads',
