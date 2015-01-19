@@ -82,6 +82,10 @@ body {
         background: image-url('flower.svg') center center no-repeat;
         height: 46rem;
         z-index: 1;
+
+        .span2 {
+            margin-left: 42%;
+        }
     }
 
     .form-signin {
@@ -92,8 +96,9 @@ body {
         }
 
         i.entypo {
-            margin: 7px 0px 0px -16px;
+            margin: 12px 0px 0px -24px;
             font-size: 2rem;
+            position: absolute;
         }
     }
 }
