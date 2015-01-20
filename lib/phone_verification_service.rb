@@ -2,7 +2,7 @@ class PhoneVerificationService
   attr_reader :user
 
   def initialize(options)
-    @profile = User.find(options[:user_id]).profile
+    @profile = options
   end
 
   def process
@@ -20,11 +20,8 @@ class PhoneVerificationService
   end
 
   def sms_gateway
-    "http/sendmsg?" +
-    "user=#{Rails.application.secrets.sms_gateway_user}" +
-    "&password=#{Rails.application.secrets.sms_gateway_password}" +
-    "&api_id=#{Rails.application.secrets.sms_gateway_appid}" +
-    "&to=#{to}&text=#{body}"
+    sms_gw = AppConfig.environment.sms_gateway.to_h
+    "http/sendmsg?user=#{sms_gw['user']}&password=#{sms_gw['pass']}&api_id=#{sms_gw['appid']}&to=#{to}&text=#{body}"
   end
 
   def send_sms

@@ -227,7 +227,7 @@ class Profile < ActiveRecord::Base
   end
 
   def send_sms_for_phone_verification
-    PhoneVerificationService.new(user_id: id).process
+    PhoneVerificationService.new(self).process
   end
 
   def generate_phone_verification_code
