@@ -140,12 +140,12 @@ ro:
     one: "1 aspect"
     other: "%{count} aspecte"
     seed:
-      acquaintances: "Cunoscuții"
+      acquaintances: "Cunoștințe"
       family: "Familie"
       friends: "Prieteni"
       work: "Lucru"
     selected_contacts:
-      manage_your_aspects: "Gestionează aspectele tale personale"
+      manage_your_aspects: "Gestionează contactele tale personale"
       no_contacts: "Nu aveți incă nici o persoană de contact."
       view_all_community_spotlight: "Vizualizează toate reflectoarele comunității"
       view_all_contacts: "Vezi toate contactele"
@@ -268,7 +268,7 @@ ro:
     application:
       back_to_top: "Înapoi la începutul paginii"
       whats_new: "ce mai e nou?"
-      your_aspects: "aspectele tale"
+      your_aspects: "contactele tale"
     header:
       admin: "administrare"
       blog: "Blog"
@@ -698,15 +698,18 @@ ro:
       two: "Show two more comments"
       zero: "No more comments"
   streams:
+    aspects_stream: "Contactele mele"
+    mentioned_stream: "@Mentions"
+    followed_tags_stream: "Interesele mele"
     activity:
       title: "Activitatea proprie"
     aspects:
-      title: "Your Aspects"
+      title: "Contactele mele"
     followed_tag:
       add_a_tag: "Adaugă un tag"
-      follow: "Urmează"
+      follow: "Urmărește"
     mentions:
-      title: "Your Mentions"
+      title: "Mențiuni"
     multi:
       contacts_title: "Persoane în Fluxul tău"
       title: "Flux"
