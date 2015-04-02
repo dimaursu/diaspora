@@ -58,7 +58,7 @@ gem 'autoprefixer-rails', '4.0.2.1'
 
 # Database
 
-ENV['DB'] ||= 'mysql'
+ENV['DB'] ||= 'postgres'
 
 gem 'mysql2', '0.3.17' if ENV['DB'] == 'all' || ENV['DB'] == 'mysql'
 gem 'pg',     '0.17.1' if ENV['DB'] == 'all' || ENV['DB'] == 'postgres'
