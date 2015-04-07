@@ -1,8 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-# require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
-require 'mina/rvm'    # for rvm support. (http://rvm.io)
+require 'mina/rvm'
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -10,13 +9,18 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :domain, 'alt.ceata.org'
-set :deploy_to, '/home/dima/diaspora'
+set :user, 'deployer'    # Username in the server to SSH to.
+set :domain, '185.82.172.101'
+
+set :deploy_to, '/home/deployer/cinemaplace'
+set :forward_agent, true
+
 set :repository, 'https://github.com/dimaursu/diaspora.git'
 set :branch, 'boostrap2'
 
-# For system-wide RVM install.
-#   set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :rails_env, 'production'
+set :chruby_path, '/usr/local/share/chruby/chruby.sh'
+
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -28,19 +32,9 @@ set :shared_paths, [
   'public/uploads',
 ]
 
-# Optional settings:
-   set :user, 'dima'    # Username in the server to SSH to.
-#   set :port, '30000'     # SSH port number.
-#   set :forward_agent, true     # SSH forward_agent.
-
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  # If you're using rbenv, use this to load the rbenv environment.
-  # Be sure to commit your .rbenv-version to your repository.
-  # invoke :'rbenv:load'
-
-  # For those using RVM, use this to load an RVM version@gemset.
   invoke :'rvm:use[ruby-2.1]'
 end
 
@@ -56,9 +50,6 @@ task :setup => :environment do
 
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
-
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'."]
 end
 
 desc "Deploys the current version to the server."
@@ -72,7 +63,7 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
-      queue "RAILS_ENV=production bundle exec foreman start > #{deploy_to}/#{shared_path}/log/foreman.txt 2>&1 &"
+    #queue "RAILS_ENV=production bundle exec foreman start > #{deploy_to}/#{shared_path}/log/foreman.txt 2>&1 &"
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
