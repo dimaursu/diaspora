@@ -19,8 +19,6 @@ set :repository, 'https://github.com/dimaursu/diaspora.git'
 set :branch, 'boostrap2'
 
 set :rails_env, 'production'
-set :chruby_path, '/usr/local/share/chruby/chruby.sh'
-
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
@@ -35,7 +33,7 @@ set :shared_paths, [
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
 task :environment do
-  invoke :'rvm:use[ruby-2.1]'
+  invoke :'rvm:use[ruby-2.2]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
